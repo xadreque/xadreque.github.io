@@ -4,189 +4,360 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xadreque Alfeu Zandamela | Portfólio de Engenharia</title>
-    <!-- Vinculação do arquivo de estilos externo -->
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* BASE STYLE - MODO ESCURO AVANÇADO */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.6;
+            padding-top: 64px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* BARRA DE NAVEGAÇÃO */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid #1e293b;
+            z-index: 100;
+            height: 64px;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+        .logo {
+            color: #2dd4bf;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #2dd4bf;
+        }
+        .nav-links a.btn-nav {
+            background-color: #14b8a6;
+            color: #0f172a;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: calc(100vh - 64px);
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+            padding: 80px 0;
+        }
+        .hero-content {
+            max-width: 800px;
+        }
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(20, 184, 166, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            color: #2dd4bf;
+            font-family: monospace;
+            font-size: 0.75rem;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+        .hero h1 span {
+            color: #2dd4bf;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            line-height: 1.75;
+            margin-bottom: 40px;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+        }
+        .btn-primary {
+            display: inline-block;
+            border: 1px solid #334155;
+            color: #f8fafc;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            border-color: #14b8a6;
+            color: #14b8a6;
+        }
+        .btn-secondary {
+            display: inline-block;
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.875rem;
+            border: 1px solid #334155;
+            text-decoration: none;
+        }
+
+        /* SEÇÕES */
+        .section-padding {
+            padding: 96px 0;
+        }
+        .bg-darker {
+            background-color: #020617;
+        }
+        .border-t-custom {
+            border-top: 1px solid #1e293b;
+        }
+        .section-header {
+            margin-bottom: 64px;
+        }
+        .section-header.center {
+            text-align: center;
+        }
+        .section-tag {
+            font-size: 0.75rem;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #2dd4bf;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        /* COMPETÊNCIAS */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        .card {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            padding: 40px;
+            border-radius: 16px;
+        }
+        .card-num {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(20, 184, 166, 0.1);
+            color: #2dd4bf;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-weight: bold;
+            margin-bottom: 28px;
+            font-size: 1.25rem;
+        }
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: bold;
+            margin-bottom: 16px;
+            color: #ffffff;
+        }
+        .card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 28px;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .card-tag {
+            background-color: #1e293b;
+            color: #2dd4bf;
+            font-size: 0.75rem;
+            font-family: monospace;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        /* GRÁFICOS DO GITHUB */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+        }
+        .metric-card {
+            background-color: #020617;
+            border: 1px solid #1e293b;
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .metric-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* TIMELINE DO PERCURSO */
+        .timeline-wrapper {
+            border-left: 2px solid #1e293b;
+            padding-left: 40px;
+            margin-left: 8px;
+            max-width: 800px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 56px;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -49px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            background-color: #14b8a6;
+            border-radius: 50%;
+            border: 4px solid #020617;
+        }
+        .timeline-tag {
+            font-size: 0.75rem;
+            font-family: monospace;
+            color: #2dd4bf;
+            background-color: rgba(20, 184, 166, 0.1);
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+        .timeline-item h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            color: #ffffff;
+        }
+        .timeline-sub {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+        .timeline-desc {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* CONTACTO HUB */
+        .contact-desc {
+            color: #94a3b8;
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 48px auto;
+            text-align: center;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .contact-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            padding: 24px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .contact-card:hover {
+            border-color: #14b8a6;
+            background-color: #0f172a;
+        }
+        .contact-label {
+            font-size: 0.75rem;
+            font-family: monospace;
+            color: #64748b;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .contact-val {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #e2e8f0;
+        }
+        .contact-card.active-web .contact-label { color: #2dd4bf; }
+        .contact-card.active-web .contact-val { color: #2dd4bf; }
+
+        footer {
+            background-color: #020617;
+            padding: 40px 0;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #475569;
+            font-family: monospace;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
 
     <!-- BARRA DE NAVEGAÇÃO -->
     <nav class="navbar">
-        <div class="nav-container">
-            <span class="logo">&lt;XADREQUE.ENG /&gt;</span>
-            <div class="nav-links">
-                <a href="#sobre">Sobre</a>
-                <a href="#competencias">Competências</a>
-                <a href="#desempenho">Desempenho</a>
-                <a href="#educacao">Percurso</a>
-                <a href="#contacto" class="btn-nav">Contacto</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <header id="sobre" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-badge">Engenheiro de Software & Especialista em Redes</span>
-                <h1>Xadreque Alfeu <span>Zandamela</span></h1>
-                <p>Profissional moçambicano focado na intersecção entre o desenvolvimento de sistemas escaláveis, administração avançada de bases de dados relacionais e infraestrutura de redes corporativas. Comprometido com a automação e robustez de software.</p>
-                <div class="hero-btns">
-                    <a href="#competencias" class="btn-primary">Ver Competências</a>
-                    <a href="https://github.com" target="_blank" class="btn-secondary">://github.com</a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- SEÇÃO COMPETÊNCIAS -->
-    <section id="competencias" class="section-padding bg-darker border-t-custom">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">// Stack Técnica</span>
-                <p class="section-title">Especializações de Engenharia</p>
-            </div>
-            
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-num">01</div>
-                    <h3>Infraestrutura & Redes</h3>
-                    <p>Desenho, implementação e monitorização de redes de computadores com foco em ativos industriais.</p>
-                    <div class="tags-container">
-                        <span class="card-tag">Cisco CCNA</span>
-                        <span class="card-tag">Switching</span>
-                        <span class="card-tag">Routing</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-num">02</div>
-                    <h3>Bases de Dados</h3>
-                    <p>Modelação relacional avançada e codificação de inteligência diretamente na camada de dados.</p>
-                    <div class="tags-container">
-                        <span class="card-tag">Oracle DB</span>
-                        <span class="card-tag">PL/SQL</span>
-                        <span class="card-tag">Procedures</span>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="card-num">03</div>
-                    <h3>Engenharia de Software</h3>
-                    <p>Construção de aplicações completas voltadas para o mercado, focando em segurança e estabilidade.</p>
-                    <div class="tags-container">
-                        <span class="card-tag">Web Dev</span>
-                        <span class="card-tag">Tailwind CSS</span>
-                        <span class="card-tag">Clean Code</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO DESEMPENHO -->
-    <section id="desempenho" class="section-padding border-t-custom">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">// Engenharia Métrica</span>
-                <p class="section-title">Atividade & Performance de Código</p>
-            </div>
-            
-            <div class="grid-2">
-                <div class="metric-card">
-                    <img src="https://vercel.app" alt="Estatísticas Gerais do GitHub" />
-                </div>
-                <div class="metric-card">
-                    <img src="https://vercel.app" alt="Linguagens Mais Utilizadas" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO TIMELINE -->
-    <section id="educacao" class="section-padding bg-darker border-t-custom">
-        <div class="container">
-            <div class="section-header center">
-                <span class="section-tag">// Percurso Histórico</span>
-                <p class="section-title">Formação & Projetos Estratégicos</p>
-            </div>
-
-            <div class="timeline-wrapper">
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #14b8a6;"></div>
-                    <span class="timeline-tag">Ensino Superior</span>
-                    <h3>Bacharelato em Engenharia Informática</h3>
-                    <p class="timeline-sub">ISCTEM — Instituto Superior de Ciências e Tecnologias de Moçambique</p>
-                    <p class="timeline-desc">Foco em engenharia de sistemas complexos, arquiteturas corporativas e desenvolvimento moderno.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #10b981;"></div>
-                    <span class="timeline-tag">Certificação Industrial</span>
-                    <h3>Formação Cisco CCNA</h3>
-                    <p class="timeline-sub">Cisco Networking Academy</p>
-                    <p class="timeline-desc">Domínio completo sobre roteamento, comutação de pacotes de dados, segurança lógica de perímetros e comunicação entre redes corporativas.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #3b82f6;"></div>
-                    <span class="timeline-tag">Ensino Médio Técnico</span>
-                    <h3>Técnico Médio em Sistemas Informáticos</h3>
-                    <p class="timeline-sub">ITC — Instituto dos Transportes e Comunicações</p>
-                    <p class="timeline-desc">Fundamentos rígidos de lógica de programação, manipulação de hardware de redes e administração básica de sistemas operativos.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #a855f7;"></div>
-                    <span class="timeline-tag">Atuação de Mercado</span>
-                    <h3>Desenvolvimento & Infraestrutura Activa</h3>
-                    <p class="timeline-sub">Moçambique — Plataformas Comerciais e Voluntariado</p>
-                    <p class="timeline-desc">Desenvolvimento independente de aplicações comerciais integradas no mercado nacional. Cooperação voluntária com equipas de suporte técnico na configuração de infraestruturas locais de comunicações.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO HUB CONTACTO -->
-    <section id="contacto" class="section-padding border-t-custom">
-        <div class="container">
-            <div class="section-header center">
-                <span class="section-tag">// Hub de Contacto</span>
-                <p class="section-title">Canais de Comunicação Direta</p>
-            </div>
-            <p class="contact-desc">Seja para discutir o desenvolvimento de uma plataforma ou auditoria em infraestrutura Cisco/Oracle, escolha o canal ideal.</p>
-            
-            <div class="grid-4">
-                <a href="mailto:tecnicozanda@gmail.com" class="contact-card">
-                    <span class="contact-label">E-mail</span>
-                    <span class="contact-val">tecnicozanda@gmail.com</span>
-                </a>
-                
-                <a href="tel:+258842510516" class="contact-card">
-                    <span class="contact-label">Contacto Móvel</span>
-                    <span class="contact-val">+258 84 251 0516</span>
-                </a>
-
-                <a href="https://linkedin.com" target="_blank" class="contact-card">
-                    <span class="contact-label">LinkedIn</span>
-                    <span class="contact-val">Xadreque Alfeu</span>
-                </a>
-
-                <a href="https://github.io" target="_blank" class="contact-card active-web">
-                    <span class="contact-label">Website Oficial</span>
-                    <span class="contact-val">Visitar Portfólio</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Xadreque Alfeu Zandamela. Hospedado de forma segura no GitHub Pages.</p>
-        </div>
-    </footer>
-
-    <!-- Vinculação do arquivo de scripts externo -->
-    <script src="script.js"></script>
-</body>
-</html>
+        <div class="nav-container container">
