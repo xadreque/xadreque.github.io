@@ -1,1 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-MZ" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xadreque Alfeu Zandamela | Portfólio de Engenharia</title>
+    <!-- Carregamento do Tailwind CSS via CDN para ambiente de produção estático -->
+    <script src="https://tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 850: '#1e293b' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-teal-500 selection:text-slate-900">
 
+    <!-- BARRA DE NAVEGAÇÃO -->
+    <nav class="fixed top-0 left-0 w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-800 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <span class="text-teal-400 font-mono font-bold text-lg">&lt;XADREQUE.ENG /&gt;</span>
+            <div class="flex items-center gap-6 text-sm font-medium text-slate-400">
+                <a href="#sobre" class="hidden sm:inline hover:text-teal-400 transition-colors">Sobre</a>
+                <a href="#competencias" class="hover:text-teal-400 transition-colors">Competências</a>
+                <a href="#educacao" class="hover:text-teal-400 transition-colors">Percurso</a>
+                <a href="#contacto" class="bg-teal-500 text-slate-900 px-4 py-2 rounded-md font-bold hover:bg-teal-400 transition-colors">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (APRESENTAÇÃO) -->
+    <header id="sobre" class="min-h-screen flex items-center pt-16 bg-gradient-to-b from-slate-850 via-slate-900 to-slate-950">
+        <div class="max-w-4xl mx-auto px-6 py-12 text-center md:text-left md:flex md:items-center md:gap-12">
+            <div class="flex-1 space-y-6">
+                <div class="inline-block bg-teal-500/10 border border-teal-500/30 text-teal-400 font-mono text-xs px-3 py-1 rounded-full uppercase tracking-wider">
+                    Engenheiro de Software & Especialista em Redes
+                </div>
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight">
+                    Xadreque Alfeu <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">Zandamela</span>
+                </h1>
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Profissional moçambicano focado na intersecção entre o desenvolvimento de sistemas escaláveis, administração avançada de bases de dados relacionais e infraestrutura de redes corporativas. Comprometido com a automação e robustez de software.
+                </p>
+                <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                    <a href="#competencias" class="border border-slate-700 hover:border-teal-500 px-6 py-3 rounded-lg font-medium transition-all">Ver Competências</a>
+                    <a href="https://github.com" target="_blank" class="bg-slate-800 hover:bg-slate-700 px-6 py-3 rounded-lg font-mono text-sm border border-slate-700 transition-all flex items-center gap-2">
+                        <span>://github.com</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- COMPETÊNCIAS -->
+    <section id="competencias" class="py-24 bg-slate-950 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-2xl mb-12">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-teal-400 mb-2">// Stack Técnica</h2>
+                <p class="text-3xl font-bold tracking-tight">Especializações de Engenharia</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- CARD 1: REDES -->
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-xl hover:border-teal-500/50 transition-all group">
+                    <div class="w-12 h-12 bg-teal-500/10 text-teal-400 rounded-lg flex items-center justify-center font-mono font-bold mb-6 group-hover:bg-teal-500 group-hover:text-slate-900 transition-all">01</div>
+                    <h3 class="text-xl font-bold mb-3">Infraestrutura & Redes</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Desenho, implementação e monitorização de redes de computadores com foco em ativos industriais.</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-teal-400">
+                        <span class="bg-slate-800 px-2 py-1 rounded">Cisco CCNA</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded">Switching</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded">Routing</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded">Troubleshooting</span>
+                    </div>
+                </div>
+
+                <!-- CARD 2: BANCO DE DADOS -->
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-xl hover:border-emerald-500/50 transition-all group">
+                    <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-lg flex items-center justify-center font-mono font-bold mb-6 group-hover:bg-emerald-500 group-hover:text-slate-900 transition-all">02</div>
+                    <h3 class="text-xl font-bold mb-3">Bases de Dados</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Modelação relacional avançada e codificação de inteligência diretamente na camada de dados.</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-emerald-400">
+                        <span class="bg-slate-800 px-2 py-1 rounded">Oracle DB</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded">PL/SQL</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded">Procedures</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded">Triggers</span>
+                    </div>
+                </div>
+
+                <!-- CARD 3: DESENVOLVIMENTO -->
+                <div class="bg-slate-900 border border-slate-800 p-8 rounded-xl shadow-xl hover:border-blue-500/50 transition-all group">
+                    <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-lg flex items-center justify-center font-mono font-bold mb-6 group-hover:bg-blue-500 group-hover:text-slate-900 transition-all">03</div>
+                    <h3 class="text-xl font-bold mb-3">Engenharia de Software</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-4">Construção de aplicações completas voltadas para o mercado, focando em segurança e estabilidade.</p>
+                    <div class="flex flex-wrap gap-2 text-xs font-mono text-blue-400">
+                        <span class="bg-slate-800 px-2 py-1 rounded">Web Ecosystems</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded">Tailwind CSS</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded">APIs RESTful</span>
+                        <span class="bg-slate-800 px-2 py-1 rounded">Clean Code</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE ACADÉMICA -->
+    <section id="educacao" class="py-24 bg-slate-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="max-w-2xl mb-16 text-center mx-auto">
+                <h2 class="text-xs font-mono uppercase tracking-widest text-teal-400 mb-2">// Percurso Histórico</h2>
+                <p class="text-3xl font-bold tracking-tight">Formação & Projetos Estratégicos</p>
+            </div>
+
+            <div class="relative border-l border-slate-800 pl-6 space-y-12">
+                <!-- TIMELINE ITEM 1 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-teal-500 rounded-full border-4 border-slate-900"></div>
+                    <span class="text-xs font-mono text-teal-400 bg-teal-500/10 px-2 py-1 rounded">Ensino Superior</span>
+                    <h3 class="text-xl font-bold mt-2">Bacharelato em Engenharia Informática</h3>
+                    <p class="text-sm font-medium text-slate-400">ISCTEM — Instituto Superior de Ciências e Tecnologias de Moçambique</p>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Foco em engenharia de sistemas complexos, arquiteturas corporativas e desenvolvimento moderno.</p>
+                </div>
+
+                <!-- TIMELINE ITEM 2 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-emerald-500 rounded-full border-4 border-slate-900"></div>
+                    <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded">Certificação Industrial</span>
+                    <h3 class="text-xl font-bold mt-2">Formação Cisco CCNA</h3>
+                    <p class="text-sm font-medium text-slate-400">Cisco Networking Academy</p>
+                    <p class="text-slate-400 text-sm mt-2 leading-relaxed">Domínio completo sobre roteamento, comutação de pacotes de dados, segurança lógica de perímetros e comunicação entre redes corporativas.</p>
+                </div>
+
+                <!-- TIMELINE ITEM 3 -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-blue-500 rounded-full border-4 border-slate-900"></div>
+                    <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-2 py-1 rounded">Ensino Médio Técnico</span>
+                    <h3 class="text-xl font-bold mt-2">Técnico Médio em Sistemas Informáticos</h3>
