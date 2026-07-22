@@ -1,140 +1,90 @@
 <!DOCTYPE html>
-<html lang="pt-MZ" class="scroll-smooth">
+<html lang="pt-MZ" style="scroll-behavior: smooth;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xadreque Alfeu Zandamela | Portfólio de Engenharia</title>
-    <!-- Carregamento do Tailwind CSS via Folha de Estilos Direta (Resolve bloqueio do GitHub Pages) -->
-    <link rel="stylesheet" href="https://cloudflare.com" integrity="sha512-wnea99c6Yc3BGs5E8mXyvwEPWGys7Eju3kvWQH93uCXDxqGlkOt9lif/UcJv2VchyipMC1e2CywKYevygs6mGA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link Direto do Tailwind CSS v2 estável para garantir compatibilidade estrutural -->
+    <link rel="stylesheet" href="https://cloudflare.com" />
 </head>
-<body class="bg-gray-900 text-gray-100 font-sans antialiased">
+<body style="background-color: #0f172a; color: #f8fafc; font-family: sans-serif; margin: 0; padding: 0;">
 
-    <!-- BARRA DE NAVEGAÇÃO -->
-    <nav class="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-90 border-b border-gray-800 z-50">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <span class="text-green-400 font-mono font-bold text-lg">&lt;XADREQUE.ENG /&gt;</span>
-            <div class="flex items-center gap-6 text-sm font-medium text-gray-400 space-x-4">
-                <a href="#sobre" class="hidden sm:inline hover:text-green-400 transition-colors">Sobre</a>
-                <a href="#competencias" class="hover:text-green-400 transition-colors">Competências</a>
-                <a href="#desempenho" class="hover:text-green-400 transition-colors">Desempenho</a>
-                <a href="#educacao" class="hover:text-green-400 transition-colors">Percurso</a>
-                <a href="#contacto" class="bg-green-500 text-gray-900 px-4 py-2 rounded font-bold hover:bg-green-400 transition-colors">Contacto</a>
+    <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+    <nav style="position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(15, 23, 42, 0.9); border-bottom: 1px solid #1e293b; z-index: 50; height: 64px;">
+        <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between" style="display: flex; justify-content: space-between; align-items: center; height: 100%;">
+            <span style="color: #2dd4bf; font-family: monospace; font-weight: bold; font-size: 1.125rem;">&lt;XADREQUE.ENG /&gt;</span>
+            <div style="display: flex; align-items: center; gap: 24px;">
+                <a href="#sobre" style="color: #94a3b8; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='#94a3b8'">Sobre</a>
+                <a href="#competencias" style="color: #94a3b8; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='#94a3b8'">Competências</a>
+                <a href="#desempenho" style="color: #94a3b8; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='#94a3b8'">Desempenho</a>
+                <a href="#educacao" style="color: #94a3b8; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='#94a3b8'">Percurso</a>
+                <a href="#contacto" style="background-color: #14b8a6; color: #0f172a; padding: 8px 16px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.backgroundColor='#2dd4bf'" onmouseout="this.style.backgroundColor='#14b8a6'">Contacto</a>
             </div>
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header id="sobre" class="min-h-screen flex items-center pt-16 bg-gray-900">
-        <div class="max-w-4xl mx-auto px-6 py-24 text-center md:text-left md:flex md:items-center md:gap-12">
-            <div class="flex-1">
-                <div class="inline-block bg-green-500 bg-opacity-10 border border-green-500 border-opacity-30 text-green-400 font-mono text-xs px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+    <!-- HERO SECTION (APRESENTAÇÃO) -->
+    <header id="sobre" style="min-h-screen: 100vh; padding-top: 120px; padding-bottom: 80px; background: linear-gradient(to bottom, #1e293b, #0f172a);">
+        <div class="max-w-4xl mx-auto px-6 text-center md:text-left">
+            <div style="margin-bottom: 24px;">
+                <span style="background-color: rgba(20, 184, 166, 0.1); border: 1px solid rgba(20, 184, 166, 0.3); color: #2dd4bf; font-family: monospace; font-size: 0.75rem; padding: 4px 12px; border-radius: 9999px; uppercase; tracking-wider: 0.05em;">
                     Engenheiro de Software & Especialista em Redes
-                </div>
-                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
-                    Xadreque Alfeu <span class="text-green-400">Zandamela</span>
-                </h1>
-                <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                    Profissional moçambicano focado na intersecção entre o desenvolvimento de sistemas escaláveis, administração avançada de bases de dados relacionais e infraestrutura de redes corporativas. Comprometido com a automação e robustez de software.
-                </p>
-                <div class="flex flex-wrap gap-4 justify-center md:justify-start space-x-2">
-                    <a href="#competencias" class="border border-gray-700 hover:border-green-500 px-6 py-3 rounded font-medium transition-all">Ver Competências</a>
-                    <a href="https://github.com" target="_blank" class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded font-mono text-sm border border-gray-700 transition-all">
-                        <span>://github.com</span>
-                    </a>
-                </div>
+                </span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold" style="margin-bottom: 24px; tracking-tight: -0.025em; font-size: 3rem;">
+                Xadreque Alfeu <span style="color: #2dd4bf;">Zandamela</span>
+            </h1>
+            <p style="color: #94a3b8; font-size: 1.125rem; line-height: 1.75; max-w-2xl: 42rem; margin-bottom: 32px;">
+                Profissional moçambicano focado na intersecção entre o desenvolvimento de sistemas escaláveis, administração avançada de bases de dados relacionais e infraestrutura de redes corporativas. Comprometido com a automação e robustez de software.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; justify-content: flex-start;">
+                <a href="#competencias" style="border: 1px solid #334155; color: #f8fafc; padding: 12px 24px; border-radius: 8px; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.borderColor='#14b8a6'" onmouseout="this.style.borderColor='#334155'">Ver Competências</a>
+                <a href="https://github.com" target="_blank" style="background-color: #1e293b; color: #f8fafc; padding: 12px 24px; border-radius: 8px; font-family: monospace; font-size: 0.875rem; border: 1px solid #334155; text-decoration: none;" onmouseover="this.style.backgroundColor='#334155'" onmouseout="this.style.backgroundColor='#1e293b'">
+                    ://github.com
+                </a>
             </div>
         </div>
     </header>
 
     <!-- COMPETÊNCIAS -->
-    <section id="competencias" class="py-24 bg-gray-950 border-t border-gray-800">
+    <section id="competencias" style="padding-top: 96px; padding-bottom: 96px; background-color: #020617; border-top: 1px solid #1e293b;">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="max-w-2xl mb-12">
-                <h2 class="text-xs font-mono uppercase tracking-widest text-green-400 mb-2">// Stack Técnica</h2>
-                <p class="text-3xl font-bold tracking-tight">Especializações de Engenharia</p>
+            <div style="margin-bottom: 48px;">
+                <h2 style="font-size: 0.75rem; font-family: monospace; text-transform: uppercase; tracking-spacing: 0.1em; color: #2dd4bf; margin-bottom: 8px;">// Stack Técnica</h2>
+                <p style="font-size: 1.875rem; font-weight: bold; tracking-tight: -0.025em; color: #ffffff;">Especializações de Engenharia</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" style="display: grid; gap: 32px;">
                 <!-- CARD 1: REDES -->
-                <div class="bg-gray-800 border border-gray-700 p-8 rounded shadow-xl hover:border-green-500 transition-all">
-                    <div class="w-12 h-12 bg-green-500 bg-opacity-10 text-green-400 rounded flex items-center justify-center font-mono font-bold mb-6 text-xl">01</div>
-                    <h3 class="text-xl font-bold mb-3">Infraestrutura & Redes</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Desenho, implementação e monitorização de redes de computadores com foco em ativos industriais.</p>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono text-green-400 space-x-1">
-                        <span class="bg-gray-900 px-2 py-1 rounded">Cisco CCNA</span>
-                        <span class="bg-gray-900 px-2 py-1 rounded">Switching</span>
-                        <span class="bg-gray-900 px-2 py-1 rounded">Routing</span>
+                <div style="background-color: #0f172a; border: 1px solid #1e293b; padding: 32px; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
+                    <div style="width: 48px; height: 48px; background-color: rgba(20, 184, 166, 0.1); color: #2dd4bf; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-weight: bold; margin-bottom: 24px; font-size: 1.25rem;">01</div>
+                    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; color: #ffffff;">Infraestrutura & Redes</h3>
+                    <p style="color: #94a3b8; font-size: 0.875rem; line-height: 1.625; margin-bottom: 16px;">Desenho, implementação e monitorização de redes de computadores com foco em ativos industriais.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span style="background-color: #1e293b; color: #2dd4bf; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Cisco CCNA</span>
+                        <span style="background-color: #1e293b; color: #2dd4bf; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Switching</span>
+                        <span style="background-color: #1e293b; color: #2dd4bf; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px;">Routing</span>
                     </div>
                 </div>
 
                 <!-- CARD 2: BANCO DE DADOS -->
-                <div class="bg-gray-800 border border-gray-700 p-8 rounded shadow-xl hover:border-green-500 transition-all">
-                    <div class="w-12 h-12 bg-green-500 bg-opacity-10 text-green-400 rounded flex items-center justify-center font-mono font-bold mb-6 text-xl">02</div>
-                    <h3 class="text-xl font-bold mb-3">Bases de Dados</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Modelação relacional avançada e codificação de inteligência diretamente na camada de dados.</p>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono text-green-400 space-x-1">
-                        <span class="bg-gray-900 px-2 py-1 rounded">Oracle DB</span>
-                        <span class="bg-gray-900 px-2 py-1 rounded">PL/SQL</span>
-                        <span class="bg-gray-900 px-2 py-1 rounded">Procedures</span>
+                <div style="background-color: #0f172a; border: 1px solid #1e293b; padding: 32px; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
+                    <div style="width: 48px; height: 48px; background-color: rgba(16, 185, 129, 0.1); color: #10b981; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-weight: bold; margin-bottom: 24px; font-size: 1.25rem;">02</div>
+                    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; color: #ffffff;">Bases de Dados</h3>
+                    <p style="color: #94a3b8; font-size: 0.875rem; line-height: 1.625; margin-bottom: 16px;">Modelação relacional avançada e codificação de inteligência diretamente na camada de dados.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span style="background-color: #1e293b; color: #10b981; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Oracle DB</span>
+                        <span style="background-color: #1e293b; color: #10b981; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">PL/SQL</span>
+                        <span style="background-color: #1e293b; color: #10b981; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px;">Procedures</span>
                     </div>
                 </div>
 
                 <!-- CARD 3: DESENVOLVIMENTO -->
-                <div class="bg-gray-800 border border-gray-700 p-8 rounded shadow-xl hover:border-green-500 transition-all">
-                    <div class="w-12 h-12 bg-green-500 bg-opacity-10 text-green-400 rounded flex items-center justify-center font-mono font-bold mb-6 text-xl">03</div>
-                    <h3 class="text-xl font-bold mb-3">Engenharia de Software</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Construção de aplicações completas voltadas para o mercado, focando em segurança e estabilidade.</p>
-                    <div class="flex flex-wrap gap-2 text-xs font-mono text-green-400 space-x-1">
-                        <span class="bg-gray-900 px-2 py-1 rounded">Web Dev</span>
-                        <span class="bg-gray-900 px-2 py-1 rounded">Tailwind</span>
-                        <span class="bg-gray-900 px-2 py-1 rounded">Clean Code</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO: MÉTRICAS DE DESEMPENHO -->
-    <section id="desempenho" class="py-24 bg-gray-900 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="max-w-2xl mb-12">
-                <h2 class="text-xs font-mono uppercase tracking-widest text-green-400 mb-2">// Engenharia Métrica</h2>
-                <p class="text-3xl font-bold tracking-tight">Atividade & Performance de Código</p>
-            </div>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center justify-center">
-                <!-- CARD GRÁFICO 1 -->
-                <div class="bg-gray-950 border border-gray-800 p-6 rounded flex items-center justify-center shadow-2xl">
-                    <img class="w-full max-w-md h-auto" src="https://vercel.app" alt="Estatísticas Gerais de Commits do GitHub" />
-                </div>
-                
-                <!-- CARD GRÁFICO 2 -->
-                <div class="bg-gray-950 border border-gray-800 p-6 rounded flex items-center justify-center shadow-2xl">
-                    <img class="w-full max-w-md h-auto" src="https://vercel.app" alt="Linguagens Mais Utilizadas no Código" />
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TIMELINE ACADÉMICA -->
-    <section id="educacao" class="py-24 bg-gray-950 border-t border-gray-800">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="max-w-2xl mb-16 text-center mx-auto">
-                <h2 class="text-xs font-mono uppercase tracking-widest text-green-400 mb-2">// Percurso Histórico</h2>
-                <p class="text-3xl font-bold tracking-tight">Formação & Projetos Estratégicos</p>
-            </div>
-
-            <div class="relative border-l border-gray-800 pl-6 space-y-12">
-                <!-- TIMELINE ITEM 1 -->
-                <div class="relative mb-8">
-                    <span class="text-xs font-mono text-green-400 bg-green-500 bg-opacity-10 px-2 py-1 rounded">Ensino Superior</span>
-                    <h3 class="text-xl font-bold mt-2">Bacharelato em Engenharia Informática</h3>
-                    <p class="text-sm font-medium text-gray-400">ISCTEM — Instituto Superior de Ciências e Tecnologias de Moçambique</p>
-                    <p class="text-gray-500 text-sm mt-2 leading-relaxed">Foco em engenharia de sistemas complexos, arquiteturas corporativas e desenvolvimento moderno.</p>
-                </div>
-
-                <!-- TIMELINE ITEM 2 -->
-                <div class="relative mb-8">
-                    <span class="text-xs font-mono text-green-400 bg-green-500 bg-opacity-10 px-2 py-1 rounded">Certificação Industrial</span>
-                    <h3 class="text-xl font-bold mt-2">Formação Cisco CCNA</h3>
-                    <p class="text-sm font-medium text-gray-400">Cisco Networking Academy</p>
+                <div style="background-color: #0f172a; border: 1px solid #1e293b; padding: 32px; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
+                    <div style="width: 48px; height: 48px; background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-weight: bold; margin-bottom: 24px; font-size: 1.25rem;">03</div>
+                    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; color: #ffffff;">Engenharia de Software</h3>
+                    <p style="color: #94a3b8; font-size: 0.875rem; line-height: 1.625; margin-bottom: 16px;">Construção de aplicações completas voltadas para o mercado, focando em segurança e estabilidade.</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span style="background-color: #1e293b; color: #3b82f6; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Web Dev</span>
+                        <span style="background-color: #1e293b; color: #3b82f6; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Tailwind</span>
+                        <span style="background-color: #1e293b; color: #3b82f6; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px;">Clean Code</span>
