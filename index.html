@@ -1,90 +1,354 @@
 <!DOCTYPE html>
-<html lang="pt-MZ" style="scroll-behavior: smooth;">
+<html lang="pt-MZ">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xadreque Alfeu Zandamela | Portfólio de Engenharia</title>
-    <!-- Link Direto do Tailwind CSS v2 estável para garantir compatibilidade estrutural -->
-    <link rel="stylesheet" href="https://cloudflare.com" />
-</head>
-<body style="background-color: #0f172a; color: #f8fafc; font-family: sans-serif; margin: 0; padding: 0;">
+    <style>
+        /* ESTILOS GERAIS DAPLICAÇÃO */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* BARRA DE NAVEGAÇÃO */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid #1e293b;
+            z-index: 50;
+            height: 64px;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .logo {
+            color: #2dd4bf;
+            font-family: monospace;
+            font-weight: bold;
+            font-size: 1.15rem;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-links a {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #2dd4bf;
+        }
+        .nav-links a.btn-nav {
+            background-color: #14b8a6;
+            color: #0f172a;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        .nav-links a.btn-nav:hover {
+            background-color: #2dd4bf;
+        }
 
-    <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
-    <nav style="position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(15, 23, 42, 0.9); border-bottom: 1px solid #1e293b; z-index: 50; height: 64px;">
-        <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between" style="display: flex; justify-content: space-between; align-items: center; height: 100%;">
-            <span style="color: #2dd4bf; font-family: monospace; font-weight: bold; font-size: 1.125rem;">&lt;XADREQUE.ENG /&gt;</span>
-            <div style="display: flex; align-items: center; gap: 24px;">
-                <a href="#sobre" style="color: #94a3b8; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='#94a3b8'">Sobre</a>
-                <a href="#competencias" style="color: #94a3b8; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='#94a3b8'">Competências</a>
-                <a href="#desempenho" style="color: #94a3b8; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='#94a3b8'">Desempenho</a>
-                <a href="#educacao" style="color: #94a3b8; font-size: 0.875rem; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.color='#2dd4bf'" onmouseout="this.style.color='#94a3b8'">Percurso</a>
-                <a href="#contacto" style="background-color: #14b8a6; color: #0f172a; padding: 8px 16px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 0.875rem;" onmouseover="this.style.backgroundColor='#2dd4bf'" onmouseout="this.style.backgroundColor='#14b8a6'">Contacto</a>
-            </div>
-        </div>
-    </nav>
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: linear-gradient(to bottom, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+        }
+        .badge {
+            display: inline-block;
+            background-color: rgba(20, 184, 166, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.3);
+            color: #2dd4bf;
+            font-family: monospace;
+            font-size: 0.75rem;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+        .hero h1 span {
+            color: #2dd4bf;
+        }
+        .hero p {
+            color: #94a3b8;
+            font-size: 1.15rem;
+            line-height: 1.75;
+            max-w-2xl: 600px;
+            margin-bottom: 32px;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            border: 1px solid #334155;
+            color: #f8fafc;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            border-color: #14b8a6;
+            color: #14b8a6;
+        }
+        .btn-secondary {
+            background-color: #1e293b;
+            color: #f8fafc;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 0.875rem;
+            border: 1px solid #334155;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        .btn-secondary:hover {
+            background-color: #334155;
+        }
 
-    <!-- HERO SECTION (APRESENTAÇÃO) -->
-    <header id="sobre" style="min-h-screen: 100vh; padding-top: 120px; padding-bottom: 80px; background: linear-gradient(to bottom, #1e293b, #0f172a);">
-        <div class="max-w-4xl mx-auto px-6 text-center md:text-left">
-            <div style="margin-bottom: 24px;">
-                <span style="background-color: rgba(20, 184, 166, 0.1); border: 1px solid rgba(20, 184, 166, 0.3); color: #2dd4bf; font-family: monospace; font-size: 0.75rem; padding: 4px 12px; border-radius: 9999px; uppercase; tracking-wider: 0.05em;">
-                    Engenheiro de Software & Especialista em Redes
-                </span>
-            </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold" style="margin-bottom: 24px; tracking-tight: -0.025em; font-size: 3rem;">
-                Xadreque Alfeu <span style="color: #2dd4bf;">Zandamela</span>
-            </h1>
-            <p style="color: #94a3b8; font-size: 1.125rem; line-height: 1.75; max-w-2xl: 42rem; margin-bottom: 32px;">
-                Profissional moçambicano focado na intersecção entre o desenvolvimento de sistemas escaláveis, administração avançada de bases de dados relacionais e infraestrutura de redes corporativas. Comprometido com a automação e robustez de software.
-            </p>
-            <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; justify-content: flex-start;">
-                <a href="#competencias" style="border: 1px solid #334155; color: #f8fafc; padding: 12px 24px; border-radius: 8px; font-weight: 500; text-decoration: none; margin-right: 15px;" onmouseover="this.style.borderColor='#14b8a6'" onmouseout="this.style.borderColor='#334155'">Ver Competências</a>
-                <a href="https://github.com" target="_blank" style="background-color: #1e293b; color: #f8fafc; padding: 12px 24px; border-radius: 8px; font-family: monospace; font-size: 0.875rem; border: 1px solid #334155; text-decoration: none;" onmouseover="this.style.backgroundColor='#334155'" onmouseout="this.style.backgroundColor='#1e293b'">
-                    ://github.com
-                </a>
-            </div>
-        </div>
-    </header>
+        /* SEÇÃO TÍTULOS */
+        .section-header {
+            margin-bottom: 48px;
+        }
+        .section-tag {
+            font-size: 0.75rem;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #2dd4bf;
+            margin-bottom: 8px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #ffffff;
+            letter-spacing: -0.025em;
+        }
 
-    <!-- COMPETÊNCIAS -->
-    <section id="competencias" style="padding-top: 96px; padding-bottom: 96px; background-color: #020617; border-top: 1px solid #1e293b;">
-        <div class="max-w-6xl mx-auto px-6">
-            <div style="margin-bottom: 48px;">
-                <h2 style="font-size: 0.75rem; font-family: monospace; text-transform: uppercase; tracking-spacing: 0.1em; color: #2dd4bf; margin-bottom: 8px;">// Stack Técnica</h2>
-                <p style="font-size: 1.875rem; font-weight: bold; tracking-tight: -0.025em; color: #ffffff;">Especializações de Engenharia</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" style="display: grid; gap: 32px;">
-                <!-- CARD 1: REDES -->
-                <div style="background-color: #0f172a; border: 1px solid #1e293b; padding: 32px; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
-                    <div style="width: 48px; height: 48px; background-color: rgba(20, 184, 166, 0.1); color: #2dd4bf; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-weight: bold; margin-bottom: 24px; font-size: 1.25rem;">01</div>
-                    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; color: #ffffff;">Infraestrutura & Redes</h3>
-                    <p style="color: #94a3b8; font-size: 0.875rem; line-height: 1.625; margin-bottom: 16px;">Desenho, implementação e monitorização de redes de computadores com foco em ativos industriais.</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                        <span style="background-color: #1e293b; color: #2dd4bf; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Cisco CCNA</span>
-                        <span style="background-color: #1e293b; color: #2dd4bf; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Switching</span>
-                        <span style="background-color: #1e293b; color: #2dd4bf; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px;">Routing</span>
-                    </div>
-                </div>
+        /* COMPETÊNCIAS BLOCK */
+        .skills-section {
+            padding: 96px 0;
+            background-color: #020617;
+            border-top: 1px solid #1e293b;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+        .card {
+            background-color: #0f172a;
+            border: 1px solid #1e293b;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover {
+            border-color: #14b8a6;
+            transform: translateY(-4px);
+        }
+        .card-num {
+            width: 44px;
+            height: 44px;
+            background-color: rgba(20, 184, 166, 0.1);
+            color: #2dd4bf;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+            font-weight: bold;
+            margin-bottom: 24px;
+            font-size: 1.15rem;
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+        .card p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .card-tag {
+            background-color: #1e293b;
+            color: #2dd4bf;
+            font-size: 0.75rem;
+            font-family: monospace;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
 
-                <!-- CARD 2: BANCO DE DADOS -->
-                <div style="background-color: #0f172a; border: 1px solid #1e293b; padding: 32px; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
-                    <div style="width: 48px; height: 48px; background-color: rgba(16, 185, 129, 0.1); color: #10b981; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-weight: bold; margin-bottom: 24px; font-size: 1.25rem;">02</div>
-                    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; color: #ffffff;">Bases de Dados</h3>
-                    <p style="color: #94a3b8; font-size: 0.875rem; line-height: 1.625; margin-bottom: 16px;">Modelação relacional avançada e codificação de inteligência diretamente na camada de dados.</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                        <span style="background-color: #1e293b; color: #10b981; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Oracle DB</span>
-                        <span style="background-color: #1e293b; color: #10b981; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">PL/SQL</span>
-                        <span style="background-color: #1e293b; color: #10b981; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px;">Procedures</span>
-                    </div>
-                </div>
+        /* METRICAS / DESEMPENHO */
+        .metrics-section {
+            padding: 96px 0;
+            background-color: #0f172a;
+            border-top: 1px solid #1e293b;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+        }
+        @media (max-width: 500px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+        .metric-card {
+            background-color: #020617;
+            border: 1px solid #1e293b;
+            padding: 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+        }
+        .metric-card img {
+            width: 100%;
+            max-width: 440px;
+            height: auto;
+        }
 
-                <!-- CARD 3: DESENVOLVIMENTO -->
-                <div style="background-color: #0f172a; border: 1px solid #1e293b; padding: 32px; border-radius: 12px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);">
-                    <div style="width: 48px; height: 48px; background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-weight: bold; margin-bottom: 24px; font-size: 1.25rem;">03</div>
-                    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 12px; color: #ffffff;">Engenharia de Software</h3>
-                    <p style="color: #94a3b8; font-size: 0.875rem; line-height: 1.625; margin-bottom: 16px;">Construção de aplicações completas voltadas para o mercado, focando em segurança e estabilidade.</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                        <span style="background-color: #1e293b; color: #3b82f6; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Web Dev</span>
-                        <span style="background-color: #1e293b; color: #3b82f6; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px; margin-right: 5px;">Tailwind</span>
-                        <span style="background-color: #1e293b; color: #3b82f6; font-size: 0.75rem; font-family: monospace; padding: 4px 8px; border-radius: 4px;">Clean Code</span>
+        /* TIMELINE / PERCURSO */
+        .timeline-section {
+            padding: 96px 0;
+            background-color: #020617;
+            border-top: 1px solid #1e293b;
+        }
+        .timeline-wrapper {
+            border-left: 2px solid #1e293b;
+            padding-left: 32px;
+            margin-left: 12px;
+            max-width: 800px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 48px;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -41px;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            background-color: #14b8a6;
+            border-radius: 50%;
+            border: 4px solid #020617;
+        }
+        .timeline-tag {
+            font-size: 0.75rem;
+            font-family: monospace;
+            color: #2dd4bf;
+            background-color: rgba(20, 184, 166, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+        .timeline-item h3 {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            color: #ffffff;
+        }
+        .timeline-sub {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #94a3b8;
+            margin-bottom: 12px;
+        }
+        .timeline-desc {
+            color: #64748b;
+            font-size: 0.92rem;
+            line-height: 1.65;
+        }
+
+        /* HUB CONTACTOS */
+        .contact-section {
+            padding: 96px 0;
+            background-color: #0f172a;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+        }
+        .contact-desc {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            max-width: 450px;
+            margin: 0 auto 40px auto;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .contact-card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: border-color 0.2s;
+        }
+        .contact-card:hover {
+            border-color: #14b8a6;
+        }
+        .contact-label {
