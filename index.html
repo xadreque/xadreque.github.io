@@ -64,9 +64,9 @@
 </head>
 <body>
 
-    <!-- 1. NAVEGAÇÃO -->
+    <!-- BARRA DE NAVEGAÇÃO -->
     <nav class="navbar">
-        <div class="nav-container container">
+        <div class="nav-container">
             <span class="logo">&lt;XADREQUE.ENG /&gt;</span>
             <div class="nav-links">
                 <a href="#sobre">Sobre</a>
@@ -78,7 +78,7 @@
         </div>
     </nav>
 
-    <!-- 2. SEÇÃO SOBRE -->
+    <!-- HERO SECTION -->
     <header id="sobre" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -87,46 +87,159 @@
                 <p>Profissional moçambicano focado na intersecção entre o desenvolvimento de sistemas escaláveis, administração avançada de bases de dados relacionais e infraestrutura de redes corporativas. Comprometido com a automação e robustez de software.</p>
                 <div class="hero-btns">
                     <a href="#competencias" class="btn-primary">Ver Competências</a>
+                    <a href="https://github.com" target="_blank" class="btn-secondary">://github.com</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- 3. SEÇÃO COMPETÊNCIAS -->
+    <!-- SEÇÃO COMPETÊNCIAS -->
     <section id="competencias" class="section-padding bg-darker border-t-custom">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">// Stack Técnica</span>
                 <p class="section-title">Especializações de Engenharia</p>
             </div>
+            
             <div class="grid-3">
                 <div class="card">
                     <div class="card-num">01</div>
                     <h3>Infraestrutura & Redes</h3>
-                    <p>Desenho, implementação e monitorização de redes de computadores com foco em ativos industriais baseados em Cisco CCNA.</p>
-                    <div class="tags-container"><span class="card-tag">Cisco CCNA</span><span class="card-tag">Switching</span><span class="card-tag">Routing</span></div>
+                    <p>Desenho, implementação e monitorização de redes de computadores com foco em ativos industriais.</p>
+                    <div class="tags-container">
+                        <span class="card-tag">Cisco CCNA</span>
+                        <span class="card-tag">Switching</span>
+                        <span class="card-tag">Routing</span>
+                    </div>
                 </div>
+
                 <div class="card">
                     <div class="card-num">02</div>
                     <h3>Bases de Dados</h3>
-                    <p>Modelação relacional avançada e codificação de inteligência em Oracle Database com escrita de PL/SQL avançado corporativo.</p>
-                    <div class="tags-container"><span class="card-tag">Oracle DB</span><span class="card-tag">PL/SQL</span><span class="card-tag">Procedures</span></div>
+                    <p>Modelação relacional avançada e codificação de inteligência diretamente na camada de dados.</p>
+                    <div class="tags-container">
+                        <span class="card-tag">Oracle DB</span>
+                        <span class="card-tag">PL/SQL</span>
+                        <span class="card-tag">Procedures</span>
+                    </div>
                 </div>
+
                 <div class="card">
                     <div class="card-num">03</div>
                     <h3>Engenharia de Software</h3>
-                    <p>Construção de aplicações completas voltadas para o mercado, focando em arquiteturas web estáveis, APIs RESTful e Clean Code.</p>
-                    <div class="tags-container"><span class="card-tag">Web Dev</span><span class="card-tag">Tailwind</span><span class="card-tag">Laravel</span></div>
+                    <p>Construção de aplicações completas voltadas para o mercado, focando em segurança e estabilidade.</p>
+                    <div class="tags-container">
+                        <span class="card-tag">Web Dev</span>
+                        <span class="card-tag">Tailwind CSS</span>
+                        <span class="card-tag">Clean Code</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. SEÇÃO DESEMPENHO -->
+    <!-- SEÇÃO DESEMPENHO -->
     <section id="desempenho" class="section-padding border-t-custom">
         <div class="container">
             <div class="section-header">
                 <span class="section-tag">// Engenharia Métrica</span>
                 <p class="section-title">Atividade & Performance de Código</p>
             </div>
+            
             <div class="grid-2">
+                <div class="metric-card">
+                    <img src="https://vercel.app" alt="Estatísticas Gerais do GitHub" />
+                </div>
+                <div class="metric-card">
+                    <img src="https://vercel.app" alt="Linguagens Mais Utilizadas" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO TIMELINE -->
+    <section id="educacao" class="section-padding bg-darker border-t-custom">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-tag">// Percurso Histórico</span>
+                <p class="section-title">Formação & Projetos Estratégicos</p>
+            </div>
+
+            <div class="timeline-wrapper">
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background-color: #14b8a6;"></div>
+                    <span class="timeline-tag">Ensino Superior</span>
+                    <h3>Bacharelato em Engenharia Informática</h3>
+                    <p class="timeline-sub">ISCTEM — Instituto Superior de Ciências e Tecnologias de Moçambique</p>
+                    <p class="timeline-desc">Foco em engenharia de sistemas complexos, arquiteturas corporativas e desenvolvimento moderno.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background-color: #10b981;"></div>
+                    <span class="timeline-tag">Certificação Industrial</span>
+                    <h3>Formação Cisco CCNA</h3>
+                    <p class="timeline-sub">Cisco Networking Academy</p>
+                    <p class="timeline-desc">Domínio completo sobre roteamento, comutação de pacotes de dados, segurança lógica de perímetros e comunicação entre redes corporativas.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background-color: #3b82f6;"></div>
+                    <span class="timeline-tag">Ensino Médio Técnico</span>
+                    <h3>Técnico Médio em Sistemas Informáticos</h3>
+                    <p class="timeline-sub">ITC — Instituto dos Transportes e Comunicações</p>
+                    <p class="timeline-desc">Fundamentos rígidos de lógica de programação, manipulação de hardware de redes e administração básica de sistemas operativos.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="background-color: #a855f7;"></div>
+                    <span class="timeline-tag">Atuação de Mercado</span>
+                    <h3>Desenvolvimento & Infraestrutura Activa</h3>
+                    <p class="timeline-sub">Moçambique — Plataformas Comerciais e Voluntariado</p>
+                    <p class="timeline-desc">Desenvolvimento independente de aplicações comerciais integradas no mercado nacional. Cooperação voluntária com equipas de suporte técnico na configuração de infraestruturas locais de comunicações.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO HUB CONTACTO -->
+    <section id="contacto" class="section-padding border-t-custom">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-tag">// Hub de Contacto</span>
+                <p class="section-title">Canais de Comunicação Direta</p>
+            </div>
+            <p class="contact-desc">Seja para discutir o desenvolvimento de uma plataforma ou auditoria em infraestrutura Cisco/Oracle, escolha o canal ideal.</p>
+            
+            <div class="grid-4">
+                <a href="mailto:tecnicozanda@gmail.com" class="contact-card">
+                    <span class="contact-label">E-mail</span>
+                    <span class="contact-val">tecnicozanda@gmail.com</span>
+                </a>
+                
+                <a href="tel:+258842510516" class="contact-card">
+                    <span class="contact-label">Contacto Móvel</span>
+                    <span class="contact-val">+258 84 251 0516</span>
+                </a>
+
+                <a href="https://linkedin.com" target="_blank" class="contact-card">
+                    <span class="contact-label">LinkedIn</span>
+                    <span class="contact-val">Xadreque Alfeu</span>
+                </a>
+
+                <a href="https://github.io" target="_blank" class="contact-card active-web">
+                    <span class="contact-label">Website Oficial</span>
+                    <span class="contact-val">Visitar Portfólio</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Xadreque Alfeu Zandamela. Hospedado de forma segura no GitHub Pages.</p>
+        </div>
+    </footer>
+
+    
+</body></html>
