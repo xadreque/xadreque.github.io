@@ -37,7 +37,7 @@ body{background:var(--void);color:var(--ink);font-family:var(--body);font-size:1
 ::selection{background:var(--signal);color:var(--void)}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:3px}
-img{max-width:100%;display:block}
+img{max-width:100%;display:block;-webkit-user-drag:none;-khtml-user-drag:none;-moz-user-drag:none;-o-user-drag:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
 .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
 
 /* ═══════════════ NAV ═══════════════ */
@@ -765,7 +765,7 @@ img{max-width:100%;display:block}
         </a>
         <!-- Coloque o PDF na raiz do repositório com este nome -->
         <a href="./cv-xadreque-zandamela.pdf" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">Currículo</span><span class="channel-val">Descarregar PDF</span>
+          <span class="channel-kind">Currículo</span><span class="channel-val">Ver online</span>
         </a>
         <!-- A Cisco emite o badge do CCNA via Credly -->
         <a href="https://www.credly.com/users/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
@@ -806,6 +806,17 @@ img{max-width:100%;display:block}
 <script>
 (function () {
   'use strict';
+
+  /* ═══════ PROTECÇÃO DE CONTEÚDO ═══════
+     Bloqueia o download casual: clique direito e arrastar sobre imagens.
+     Nota: nenhum site impede um utilizador técnico determinado — isto trava
+     o caso comum, que é o que se pretende. */
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  });
+  document.addEventListener('dragstart', function (e) {
+    if (e.target && e.target.tagName === 'IMG') e.preventDefault();
+  });
 
   /* Se o site ficar no GitHub Pages e a função no Vercel, troque por:
      'https://SEU-PROJECTO.vercel.app/api/metrics' */
