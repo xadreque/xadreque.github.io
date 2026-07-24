@@ -216,6 +216,20 @@ img{max-width:100%;display:block;-webkit-user-drag:none;-khtml-user-drag:none;-m
 .channel-kind{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .channel-val{font-family:var(--mono);font-size:.84rem;color:var(--ink);word-break:break-word;transition:color .25s}
 .channel:hover .channel-val{color:var(--signal)}
+/* KPI de cliques dentro do canal */
+.channel{position:relative}
+.channel-kpi{margin-top:8px;padding-top:9px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--dim);transition:color .25s,border-color .25s}
+.channel:hover .channel-kpi{border-color:var(--line-hi)}
+.channel-kpi .ck-n{color:var(--signal);font-weight:500;font-size:.82rem}
+
+/* Painel de KPIs (resumo de interacção) */
+.kpi-strip{display:grid;gap:16px;margin-bottom:40px}
+@media(min-width:640px){.kpi-strip{grid-template-columns:repeat(3,1fr)}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px;position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--signal),transparent)}
+.kpi-num{display:block;font-family:var(--display);font-size:2rem;font-weight:700;letter-spacing:-.02em;color:var(--signal);line-height:1}
+.kpi-lbl{display:block;margin-top:8px;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;color:var(--muted)}
+.kpi-lbl b{color:var(--ink);font-weight:500}
 
 /* ═══════════════ RODAPÉ ═══════════════ */
 .foot{border-top:1px solid var(--line);padding:34px 0;background:#04080F}
@@ -731,63 +745,104 @@ img{max-width:100%;display:block;-webkit-user-drag:none;-khtml-user-drag:none;-m
       <div class="hop"><span class="hop-num">05</span><span class="hop-label">Canais</span></div>
       <h2>Onde me encontrar</h2>
       <p>Para desenvolvimento de uma plataforma, revisão de infraestrutura Cisco
-         ou trabalho em base de dados — qualquer destes canais chega a mim.</p>
+         ou trabalho em base de dados — qualquer destes canais chega a mim.
+         Os números mostram quantas vezes cada canal foi aberto a partir daqui.</p>
     </div>
 
-    <div class="cluster rise">
-      <p class="cluster-label">Contacto directo</p>
-      <div class="channels">
-        <a href="mailto:tecnicozanda@gmail.com" class="channel">
-          <span class="channel-kind">E-mail</span><span class="channel-val">tecnicozanda@gmail.com</span>
-        </a>
-        <a href="https://wa.me/258842510516" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">WhatsApp</span><span class="channel-val">+258 84 251 0516</span>
-        </a>
-        <a href="tel:+258842510516" class="channel">
-          <span class="channel-kind">Telefone</span><span class="channel-val">+258 84 251 0516</span>
-        </a>
-        <!-- Conta gratuita em cal.com — substitua o link -->
-        <a href="https://cal.com/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">Agendar chamada</span><span class="channel-val">30 min · cal.com</span>
-        </a>
+    <!-- Resumo de interacção -->
+    <div class="kpi-strip rise">
+      <div class="kpi">
+        <span class="kpi-num" data-metric="cliquesTotal">—</span>
+        <span class="kpi-lbl">Interacções totais</span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-num" data-kpi="favorito-n">—</span>
+        <span class="kpi-lbl">No canal <b data-kpi="favorito-nome">mais usado</b></span>
+      </div>
+      <div class="kpi">
+        <span class="kpi-num" data-metric="visitas">—</span>
+        <span class="kpi-lbl">Visitas ao portfólio</span>
       </div>
     </div>
 
     <div class="cluster rise d1">
-      <p class="cluster-label">Trabalho e credenciais</p>
+      <p class="cluster-label">Contacto directo</p>
       <div class="channels">
-        <a href="https://github.com/xadreque" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">GitHub</span><span class="channel-val">@xadreque</span>
+        <a href="mailto:tecnicozanda@gmail.com" class="channel" data-canal="email">
+          <span class="channel-kind">E-mail</span>
+          <span class="channel-val">tecnicozanda@gmail.com</span>
+          <span class="channel-kpi" data-cliques="email"><span class="ck-n">—</span> aberturas</span>
         </a>
-        <!-- Substitua pelo URL real do seu perfil -->
-        <a href="https://www.linkedin.com/in/SEU-PERFIL" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">LinkedIn</span><span class="channel-val">Xadreque Alfeu</span>
+        <a href="https://wa.me/258842510516" target="_blank" rel="noopener" class="channel" data-canal="whatsapp">
+          <span class="channel-kind">WhatsApp</span>
+          <span class="channel-val">+258 84 251 0516</span>
+          <span class="channel-kpi" data-cliques="whatsapp"><span class="ck-n">—</span> aberturas</span>
         </a>
-        <!-- Coloque o PDF na raiz do repositório com este nome -->
-        <a href="./cv-xadreque-zandamela.pdf" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">Currículo</span><span class="channel-val">Ver online</span>
+        <a href="tel:+258842510516" class="channel" data-canal="telefone">
+          <span class="channel-kind">Telefone</span>
+          <span class="channel-val">+258 84 251 0516</span>
+          <span class="channel-kpi" data-cliques="telefone"><span class="ck-n">—</span> aberturas</span>
         </a>
-        <!-- A Cisco emite o badge do CCNA via Credly -->
-        <a href="https://www.credly.com/users/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">Certificações</span><span class="channel-val">Credly · CCNA</span>
+        <!-- Conta gratuita em cal.com — substitua o link -->
+        <a href="https://cal.com/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel" data-canal="agenda">
+          <span class="channel-kind">Agendar chamada</span>
+          <span class="channel-val">30 min · cal.com</span>
+          <span class="channel-kpi" data-cliques="agenda"><span class="ck-n">—</span> aberturas</span>
         </a>
       </div>
     </div>
 
     <div class="cluster rise d2">
+      <p class="cluster-label">Trabalho e credenciais</p>
+      <div class="channels">
+        <a href="https://github.com/xadreque" target="_blank" rel="noopener" class="channel" data-canal="github">
+          <span class="channel-kind">GitHub</span>
+          <span class="channel-val">@xadreque</span>
+          <span class="channel-kpi" data-cliques="github"><span class="ck-n">—</span> aberturas</span>
+        </a>
+        <!-- Substitua pelo URL real do seu perfil -->
+        <a href="https://www.linkedin.com/in/SEU-PERFIL" target="_blank" rel="noopener" class="channel" data-canal="linkedin">
+          <span class="channel-kind">LinkedIn</span>
+          <span class="channel-val">Xadreque Alfeu</span>
+          <span class="channel-kpi" data-cliques="linkedin"><span class="ck-n">—</span> aberturas</span>
+        </a>
+        <!-- Coloque o PDF na raiz do repositório com este nome -->
+        <a href="./cv-xadreque-zandamela.pdf" target="_blank" rel="noopener" class="channel" data-canal="curriculo">
+          <span class="channel-kind">Currículo</span>
+          <span class="channel-val">Ver online</span>
+          <span class="channel-kpi" data-cliques="curriculo"><span class="ck-n">—</span> aberturas</span>
+        </a>
+        <!-- A Cisco emite o badge do CCNA via Credly -->
+        <a href="https://www.credly.com/users/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel" data-canal="credly">
+          <span class="channel-kind">Certificações</span>
+          <span class="channel-val">Credly · CCNA</span>
+          <span class="channel-kpi" data-cliques="credly"><span class="ck-n">—</span> aberturas</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="cluster rise d3">
       <p class="cluster-label">Presença técnica</p>
       <div class="channels">
-        <a href="https://dev.to/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">Artigos</span><span class="channel-val">dev.to</span>
+        <a href="https://dev.to/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel" data-canal="devto">
+          <span class="channel-kind">Artigos</span>
+          <span class="channel-val">dev.to</span>
+          <span class="channel-kpi" data-cliques="devto"><span class="ck-n">—</span> aberturas</span>
         </a>
-        <a href="https://stackoverflow.com/users/SEU-ID" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">Stack Overflow</span><span class="channel-val">Perfil</span>
+        <a href="https://stackoverflow.com/users/SEU-ID" target="_blank" rel="noopener" class="channel" data-canal="stackoverflow">
+          <span class="channel-kind">Stack Overflow</span>
+          <span class="channel-val">Perfil</span>
+          <span class="channel-kpi" data-cliques="stackoverflow"><span class="ck-n">—</span> aberturas</span>
         </a>
-        <a href="https://gitlab.com/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">GitLab</span><span class="channel-val">Espelho de repositórios</span>
+        <a href="https://gitlab.com/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel" data-canal="gitlab">
+          <span class="channel-kind">GitLab</span>
+          <span class="channel-val">Espelho de repositórios</span>
+          <span class="channel-kpi" data-cliques="gitlab"><span class="ck-n">—</span> aberturas</span>
         </a>
-        <a href="https://x.com/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
-          <span class="channel-kind">X</span><span class="channel-val">@seu_utilizador</span>
+        <a href="https://x.com/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel" data-canal="x">
+          <span class="channel-kind">X</span>
+          <span class="channel-val">@seu_utilizador</span>
+          <span class="channel-kpi" data-cliques="x"><span class="ck-n">—</span> aberturas</span>
         </a>
       </div>
     </div>
@@ -980,6 +1035,35 @@ img{max-width:100%;display:block;-webkit-user-drag:none;-khtml-user-drag:none;-m
 
   var estado = document.getElementById('estado');
 
+  /* Nomes legíveis dos canais para o KPI "mais usado" */
+  var NOME_CANAL = {
+    email: 'E-mail', whatsapp: 'WhatsApp', telefone: 'Telefone', agenda: 'agenda',
+    github: 'GitHub', linkedin: 'LinkedIn', curriculo: 'currículo', credly: 'Credly',
+    devto: 'dev.to', stackoverflow: 'Stack Overflow', gitlab: 'GitLab', x: 'X'
+  };
+
+  function aplicarCanais(cliques) {
+    if (!cliques) return;
+    /* Preencher cada canal */
+    Object.keys(cliques).forEach(function (canal) {
+      var alvo = document.querySelector('[data-cliques="' + canal + '"] .ck-n');
+      if (alvo) {
+        var v = cliques[canal] || 0;
+        if (lento) alvo.textContent = v.toLocaleString('pt-PT');
+        else escrever(alvo, v);
+      }
+    });
+    /* Canal favorito */
+    var favN = 0, favNome = '—';
+    Object.keys(cliques).forEach(function (canal) {
+      if ((cliques[canal] || 0) > favN) { favN = cliques[canal]; favNome = NOME_CANAL[canal] || canal; }
+    });
+    var elFavN = document.querySelector('[data-kpi="favorito-n"]');
+    var elFavNome = document.querySelector('[data-kpi="favorito-nome"]');
+    if (elFavN) { if (lento) elFavN.textContent = String(favN); else escrever(elFavN, favN); }
+    if (elFavNome && favN > 0) elFavNome.textContent = favNome;
+  }
+
   fetch(ENDPOINT, { headers: { Accept: 'application/json' } })
     .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
     .then(function (d) {
@@ -989,7 +1073,8 @@ img{max-width:100%;display:block;-webkit-user-drag:none;-khtml-user-drag:none;-m
         repositorios: d.github && d.github.repositorios,
         estrelas:     d.github && d.github.estrelas,
         seguidores:   d.github && d.github.seguidores,
-        desde:        d.github && d.github.desde
+        desde:        d.github && d.github.desde,
+        cliquesTotal: d.cliquesTotal
       };
       Object.keys(mapa).forEach(function (chave) {
         var el = document.querySelector('[data-metric="' + chave + '"]');
@@ -998,12 +1083,39 @@ img{max-width:100%;display:block;-webkit-user-drag:none;-khtml-user-drag:none;-m
         if (v === undefined || v === null) { el.textContent = '—'; return; }
         escrever(el, v);
       });
+      aplicarCanais(d.cliques);
       estado.textContent = 'em directo';
     })
     .catch(function () {
       estado.textContent = 'sem ligação';
       estado.style.color = 'var(--dim)';
+      /* Se não houver ligação, mostra 0 em vez de traço perpétuo */
+      document.querySelectorAll('.channel-kpi .ck-n').forEach(function (el) { el.textContent = '0'; });
     });
+
+  /* ═══════ REGISTO DE CLIQUES NOS CANAIS ═══════
+     Ao clicar num canal, avisa a API (sendBeacon não bloqueia a navegação). */
+  function registarClique(canal) {
+    if (!canal) return;
+    var url = ENDPOINT + '?click=' + encodeURIComponent(canal);
+    try {
+      if (navigator.sendBeacon) { navigator.sendBeacon(url); return; }
+    } catch (e) {}
+    /* Alternativa: pedido leve que não atrasa a abertura do link */
+    fetch(url, { method: 'GET', keepalive: true }).catch(function () {});
+  }
+
+  document.querySelectorAll('.channel[data-canal]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      registarClique(a.getAttribute('data-canal'));
+      /* actualização optimista: soma 1 já no ecrã */
+      var n = a.querySelector('.ck-n');
+      if (n) {
+        var atual = parseInt((n.textContent || '0').replace(/\D/g, ''), 10);
+        if (!isNaN(atual)) n.textContent = (atual + 1).toLocaleString('pt-PT');
+      }
+    });
+  });
 })();
 </script>
 
