@@ -55,9 +55,26 @@ body{background:var(--void);color:var(--ink);font-family:var(--body);line-height
 .btn-solid:hover:not(:disabled){background:#45E0CD}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 
+/* Cartão de perfil */
+.perfil-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:30px;position:relative}
+.perfil-card::before{content:'';position:absolute;inset:0;border-radius:14px;padding:1px;background:linear-gradient(160deg,rgba(45,212,191,.45),transparent 44%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.perfil-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--surface-hi)}
+.perfil-head h2{font-family:var(--display);font-size:1.05rem;font-weight:600}
+.perfil-slug{font-family:var(--mono);font-size:.68rem;color:var(--dim);letter-spacing:.04em}
+.perfil-corpo{display:flex;gap:20px;align-items:center;padding:22px 20px;flex-wrap:wrap}
+.perfil-slot{position:relative;width:120px;height:120px;flex-shrink:0;border-radius:14px;overflow:hidden;border:1.5px dashed var(--line-hi);background:var(--void);cursor:pointer;transition:border-color .2s,background .2s}
+.perfil-slot:hover{border-color:var(--signal);background:rgba(45,212,191,.04)}
+.perfil-slot.drag{border-color:var(--signal);border-style:solid;background:rgba(45,212,191,.08)}
+.perfil-slot.filled{border-style:solid;border-color:var(--line)}
+.perfil-slot img{width:100%;height:100%;object-fit:cover;display:block}
+.perfil-slot .slot-tools{top:7px;right:7px}
+.perfil-texto{flex:1;min-width:200px}
+.perfil-texto p{font-size:.9rem;color:var(--muted);margin:0}
+.perfil-texto p b{color:var(--ink);font-weight:600}
+.perfil-dica{margin-top:8px!important;font-family:var(--mono);font-size:.74rem;color:var(--dim)}
+
 /* Projectos */
-.grid{display:grid;gap:22px;margin-top:34px}
-@media(min-width:820px){.grid{grid-template-columns:1fr 1fr}}
+.grid{display:grid;gap:22px;margin-top:34px}@media(min-width:820px){.grid{grid-template-columns:1fr 1fr}}
 .proj{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .proj-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line);background:var(--surface-hi)}
 .proj-head h2{font-family:var(--display);font-size:1.05rem;font-weight:600}
@@ -145,10 +162,36 @@ body{background:var(--void);color:var(--ink);font-family:var(--body);line-height
 <!-- Progresso -->
 <div class="overview">
   <div class="wrap overview-inner">
-    <span class="ov-count"><b id="ov-n">0</b> / 27 imagens prontas</span>
+    <span class="ov-count"><b id="ov-n">0</b> / 28 imagens prontas</span>
     <div class="ov-bar"><div class="ov-fill" id="ov-fill"></div></div>
     <button class="btn btn-solid" id="dl-all" disabled>Descarregar todas</button>
   </div>
+</div>
+
+<!-- Foto de perfil -->
+<div class="wrap">
+  <section class="perfil-card">
+    <div class="perfil-head">
+      <div>
+        <h2>Foto de perfil</h2>
+        <span class="perfil-slug">img/perfil.jpg · recorte quadrado 640×640</span>
+      </div>
+      <span class="proj-tally" id="perfil-tally">0 / 1</span>
+    </div>
+    <div class="perfil-corpo">
+      <div class="perfil-slot" id="perfil-slot">
+        <div class="slot-empty">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.69-8 6v1a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1c0-3.31-3.58-6-8-6Z"/></svg>
+          <span>perfil.jpg</span>
+        </div>
+      </div>
+      <div class="perfil-texto">
+        <p>Escolha uma foto onde o seu rosto esteja centrado. É cortada automaticamente
+           para um quadrado de <b>640×640</b> — o formato que o cartão do portfólio usa.</p>
+        <p class="perfil-dica">Arraste a foto para o quadrado ou clique para procurar.</p>
+      </div>
+    </div>
+  </section>
 </div>
 
 <!-- Grelha de projectos -->
@@ -209,6 +252,7 @@ body{background:var(--void);color:var(--ink);font-family:var(--body);line-height
   var lb      = document.getElementById('lb');
   var lbImg   = document.getElementById('lb-img');
   var alvoActual = null; // {slug, i} para o picker
+  var alvoPerfil = false; // picker aponta para o perfil
 
   /* ── Construir a grelha ── */
   PROJECTOS.forEach(function (p) {
@@ -263,10 +307,9 @@ body{background:var(--void);color:var(--ink);font-family:var(--body);line-height
   }
 
   picker.addEventListener('change', function () {
-    if (picker.files[0] && alvoActual) {
-      processar(picker.files[0], alvoActual.slug, alvoActual.i);
-      alvoActual = null;
-    }
+    if (!picker.files[0]) return;
+    if (alvoPerfil) { processarPerfil(picker.files[0]); alvoPerfil = false; }
+    else if (alvoActual) { processar(picker.files[0], alvoActual.slug, alvoActual.i); alvoActual = null; }
   });
 
   /* ── Redimensionar + comprimir ── */
@@ -353,6 +396,7 @@ body{background:var(--void);color:var(--ink);font-family:var(--body);line-height
   /* ── Descarregar todas (em sequência) ── */
   function descarregarTodas() {
     var lista = [];
+    if (perfil) lista.push(perfil);
     PROJECTOS.forEach(function (p) {
       estado[p.slug].forEach(function (d) { if (d) lista.push(d); });
     });
@@ -378,14 +422,87 @@ body{background:var(--void);color:var(--ink);font-family:var(--body);line-height
       t.textContent = n + ' / 3';
       t.classList.toggle('done', n === 3);
     });
-    ovN.textContent = total;
-    ovFill.style.width = (total / (PROJECTOS.length * POR_PROJECTO) * 100) + '%';
-    var has = total > 0;
+
+    var temPerfil = perfil ? 1 : 0;
+    pTally.textContent = temPerfil + ' / 1';
+    pTally.classList.toggle('done', temPerfil === 1);
+
+    var totalCom = total + temPerfil;
+    var maximo = PROJECTOS.length * POR_PROJECTO + 1; // 27 + perfil = 28
+    ovN.textContent = totalCom;
+    ovFill.style.width = (totalCom / maximo * 100) + '%';
+
+    var has = totalCom > 0;
     dlAll.disabled = !has;
     dlAll2.disabled = !has;
-    if (total === 0) dockMsg.textContent = 'Comece a carregar as fotos dos seus projectos.';
-    else if (total < PROJECTOS.length * POR_PROJECTO) dockMsg.innerHTML = '<b>' + total + '</b> prontas. Pode descarregar já ou continuar.';
-    else dockMsg.innerHTML = 'Todas as <b>27</b> imagens prontas. Descarregue e copie para img/.';
+    if (totalCom === 0) dockMsg.textContent = 'Comece pela sua foto de perfil, ou pelas fotos dos projectos.';
+    else if (totalCom < maximo) dockMsg.innerHTML = '<b>' + totalCom + '</b> prontas. Pode descarregar já ou continuar.';
+    else dockMsg.innerHTML = 'Todas as <b>28</b> imagens prontas. Descarregue e copie para img/.';
+  }
+
+  /* ═══════ FOTO DE PERFIL (recorte quadrado 640×640) ═══════ */
+  var PERFIL_LADO = 640;
+  var perfil = null; // { blob, url, nome }
+  var pSlot   = document.getElementById('perfil-slot');
+  var pTally  = document.getElementById('perfil-tally');
+
+  pSlot.addEventListener('click', function (e) {
+    if (e.target.closest('.slot-btn')) return;
+    if (perfil) { lbImg.src = perfil.url; lb.classList.add('on'); return; }
+    alvoPerfil = true;
+    picker.value = '';
+    picker.click();
+  });
+  pSlot.addEventListener('dragover', function (e) { e.preventDefault(); pSlot.classList.add('drag'); });
+  pSlot.addEventListener('dragleave', function () { pSlot.classList.remove('drag'); });
+  pSlot.addEventListener('drop', function (e) {
+    e.preventDefault();
+    pSlot.classList.remove('drag');
+    var f = Array.prototype.slice.call(e.dataTransfer.files).filter(function (x) { return x.type.indexOf('image/') === 0; })[0];
+    if (f) processarPerfil(f);
+  });
+
+  function processarPerfil(file) {
+    var img = new Image();
+    img.onload = function () {
+      var cv = document.createElement('canvas');
+      cv.width = PERFIL_LADO; cv.height = PERFIL_LADO;
+      var ctx = cv.getContext('2d');
+      var lado = Math.min(img.width, img.height);
+      var sx = (img.width - lado) / 2, sy = (img.height - lado) / 2;
+      ctx.drawImage(img, sx, sy, lado, lado, 0, 0, PERFIL_LADO, PERFIL_LADO);
+      cv.toBlob(function (blob) {
+        perfil = { blob: blob, url: cv.toDataURL('image/jpeg', QUALIDADE), nome: 'perfil.jpg' };
+        pintarPerfil();
+        actualizar();
+        URL.revokeObjectURL(img.src);
+      }, 'image/jpeg', QUALIDADE);
+    };
+    img.onerror = function () { alert('Não foi possível ler esta imagem. Tente outro ficheiro.'); };
+    img.src = URL.createObjectURL(file);
+  }
+
+  function pintarPerfil() {
+    pSlot.classList.add('filled');
+    pSlot.innerHTML =
+      '<img src="' + perfil.url + '" alt="perfil.jpg">' +
+      '<div class="slot-tools">' +
+        '<button class="slot-btn dl" title="Descarregar" aria-label="Descarregar"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a.75.75 0 0 1 .75.75v7.19l2.22-2.22a.75.75 0 1 1 1.06 1.06l-3.5 3.5a.75.75 0 0 1-1.06 0l-3.5-3.5a.75.75 0 0 1 1.06-1.06l2.22 2.22V1.75A.75.75 0 0 1 8 1ZM2.75 13a.75.75 0 0 0 0 1.5h10.5a.75.75 0 0 0 0-1.5H2.75Z"/></svg></button>' +
+        '<button class="slot-btn rm" title="Remover" aria-label="Remover"><svg viewBox="0 0 16 16" fill="currentColor"><path fill-rule="evenodd" d="M5 3.25V4H2.75a.75.75 0 0 0 0 1.5h.3l.82 8.15A1.5 1.5 0 0 0 5.36 15h5.28a1.5 1.5 0 0 0 1.5-1.35l.81-8.15h.3a.75.75 0 0 0 0-1.5H11v-.75A2.25 2.25 0 0 0 8.75 1h-1.5A2.25 2.25 0 0 0 5 3.25Zm2.25-.75a.75.75 0 0 0-.75.75V4h3v-.75a.75.75 0 0 0-.75-.75h-1.5Z" clip-rule="evenodd"/></svg></button>' +
+      '</div>';
+    pSlot.querySelector('.dl').addEventListener('click', function (e) { e.stopPropagation(); descarregar(perfil); });
+    pSlot.querySelector('.rm').addEventListener('click', function (e) { e.stopPropagation(); removerPerfil(); });
+  }
+
+  function removerPerfil() {
+    perfil = null;
+    pSlot.classList.remove('filled');
+    pSlot.innerHTML =
+      '<div class="slot-empty">' +
+        '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.69-8 6v1a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1c0-3.31-3.58-6-8-6Z"/></svg>' +
+        '<span>perfil.jpg</span>' +
+      '</div>';
+    actualizar();
   }
 
   actualizar();

@@ -68,7 +68,7 @@ img{max-width:100%;display:block}
 .hero-bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:68px 68px;opacity:.38;mask-image:radial-gradient(ellipse 78% 62% at 22% 42%,#000 12%,transparent 74%);-webkit-mask-image:radial-gradient(ellipse 78% 62% at 22% 42%,#000 12%,transparent 74%)}
 .hero-bg::after{content:'';position:absolute;width:640px;height:640px;top:-180px;right:-160px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.13) 0%,transparent 66%);filter:blur(46px)}
 .hero-grid{position:relative;display:grid;grid-template-columns:1fr;gap:56px}
-@media(min-width:940px){.hero-grid{grid-template-columns:1.6fr .9fr;gap:72px;align-items:center}}
+@media(min-width:940px){.hero-grid{grid-template-columns:1.5fr 1fr;gap:64px;align-items:center}}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);margin-bottom:24px}
 .eyebrow::before{content:'';width:26px;height:1px;background:var(--signal);opacity:.6}
 .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.5rem,6.8vw,4.3rem);line-height:1.02;letter-spacing:-.035em;margin-bottom:26px}
@@ -100,6 +100,31 @@ img{max-width:100%;display:block}
 .row-val{font-family:var(--mono);font-size:.82rem;color:var(--ink);text-align:right}
 .row-val.ok{color:var(--signal)}
 .row-val.big{font-size:1.1rem;font-weight:500;color:var(--signal)}
+
+/* ═══════════════ CARTÃO DE PERFIL (hero) ═══════════════ */
+.card-perfil{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative}
+.card-perfil::before{content:'';position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(160deg,rgba(45,212,191,.5),transparent 42%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.cp-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 20px;border-bottom:1px solid var(--line);background:var(--surface-hi)}
+.cp-head>span:first-child{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.cp-live{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--signal)}
+.cp-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--signal);animation:beacon 2.6s ease-out infinite}
+
+/* Foto + identidade */
+.cp-foto-bloco{display:flex;align-items:center;gap:16px;padding:22px 20px 20px}
+.cp-foto{position:relative;width:82px;height:82px;flex-shrink:0;border-radius:14px;overflow:hidden;border:1px solid var(--line-hi);background:var(--void)}
+.cp-foto img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+.cp-foto-vazia{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--dim);background:repeating-linear-gradient(45deg,transparent 0 9px,rgba(27,39,64,.5) 9px 18px),var(--void)}
+.cp-foto-vazia svg{width:26px;height:26px}
+.cp-foto-vazia span{font-family:var(--mono);font-size:.52rem;letter-spacing:.05em}
+/* Quando a foto existe, tapa o marcador; quando falha, o marcador fica visível */
+.cp-foto img:not([src]),.cp-foto img[src=""]{opacity:0}
+
+.cp-ident{min-width:0}
+.cp-nome{font-family:var(--display);font-size:1.02rem;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.cp-cargo{margin-top:5px;display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--signal);background:rgba(45,212,191,.09);border:1px solid rgba(45,212,191,.28);padding:4px 10px;border-radius:5px}
+
+.cp-body{padding:4px 20px 16px}
+.cp-body .row{padding:10px 0}
 
 /* ═══════════════ SECÇÕES ═══════════════ */
 .band{padding:104px 0;border-top:1px solid var(--line)}
@@ -268,11 +293,31 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
-    <aside class="panel rise d4" aria-label="Resumo profissional">
-      <div class="panel-head"><span>Estado actual</span></div>
-      <div class="panel-body">
+    <aside class="card-perfil rise d4" aria-label="Perfil profissional">
+      <div class="cp-head">
+        <span>Estado actual</span>
+        <span class="cp-live">disponível</span>
+      </div>
+
+      <!-- FOTO: substitua img/perfil.jpg pela sua fotografia (quadrada, 640×640, rosto centrado) -->
+      <div class="cp-foto-bloco">
+        <div class="cp-foto">
+          <img src="img/perfil.jpg" alt="Xadreque Alfeu Zandamela">
+          <div class="cp-foto-vazia" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0 2c-4.42 0-8 2.69-8 6v1a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1c0-3.31-3.58-6-8-6Z"/></svg>
+            <span>img/perfil.jpg</span>
+          </div>
+        </div>
+        <div class="cp-ident">
+          <p class="cp-nome">Xadreque Alfeu Zandamela</p>
+          <p class="cp-cargo">Consultor Técnico Informático</p>
+        </div>
+      </div>
+
+      <div class="cp-body">
         <div class="row"><span class="row-key">Base</span><span class="row-val">Moçambique</span></div>
-        <div class="row"><span class="row-key">Formação</span><span class="row-val">Eng. Informática · ISCTEM</span></div>
+        <div class="row"><span class="row-key">Superior</span><span class="row-val">Eng. Informática · ISCTEM</span></div>
+        <div class="row"><span class="row-key">Médio técnico</span><span class="row-val">Sistemas Informáticos · ITC</span></div>
         <div class="row"><span class="row-key">Certificação</span><span class="row-val">Cisco CCNA</span></div>
         <div class="row"><span class="row-key">Plataformas</span><span class="row-val">9 entregues</span></div>
         <div class="row"><span class="row-key">Projectos</span><span class="row-val ok">Aceito novos</span></div>
@@ -767,6 +812,14 @@ img{max-width:100%;display:block}
   var ENDPOINT = '/api/metrics';
 
   var lento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ═══════ FOTO DE PERFIL ═══════ */
+  var foto = document.querySelector('.cp-foto img');
+  if (foto) {
+    var esconder = function () { foto.style.opacity = '0'; };
+    foto.addEventListener('error', esconder);
+    if (foto.complete && foto.naturalWidth === 0) esconder();
+  }
 
   /* ═══════ NAV ═══════ */
   var nav = document.getElementById('nav');
