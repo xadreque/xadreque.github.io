@@ -1,227 +1,947 @@
 <!DOCTYPE html>
-<html lang="pt-MZ" style="scroll-behavior: smooth;">
+<html lang="pt-MZ">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xadreque Alfeu Zandamela | Portfólio de Engenharia</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: #0f172a; color: #f8fafc; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; padding-top: 64px; -webkit-font-smoothing: antialiased; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; background-color: rgba(15, 23, 42, 0.95); border-bottom: 1px solid #1e293b; z-index: 100; height: 64px; }
-        .nav-container { display: flex; justify-content: space-between; align-items: center; height: 100%; }
-        .logo { color: #2dd4bf; font-family: monospace; font-weight: bold; font-size: 1.2rem; }
-        .nav-links { display: flex; align-items: center; gap: 24px; }
-        .nav-links a { color: #94a3b8; font-size: 0.875rem; font-weight: 500; text-decoration: none; }
-        .nav-links a:hover { color: #2dd4bf; }
-        .nav-links a.btn-nav { background-color: #14b8a6; color: #0f172a; padding: 8px 16px; border-radius: 6px; font-weight: bold; }
-        .hero { min-height: calc(100vh - 64px); display: flex; align-items: center; background: linear-gradient(to bottom, #1e293b, #0f172a); padding: 60px 0; }
-        .hero-content { max-width: 800px; }
-        .hero-badge { display: inline-block; background-color: rgba(20, 184, 166, 0.1); border: 1px solid rgba(20, 184, 166, 0.2); color: #2dd4bf; font-family: monospace; font-size: 0.75rem; padding: 6px 16px; border-radius: 9999px; text-transform: uppercase; margin-bottom: 24px; }
-        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 24px; color: #ffffff; }
-        .hero h1 span { color: #2dd4bf; }
-        .hero p { color: #94a3b8; font-size: 1.2rem; margin-bottom: 40px; }
-        .btn-primary { display: inline-block; border: 1px solid #334155; color: #f8fafc; padding: 12px 28px; border-radius: 8px; font-weight: 500; text-decoration: none; }
-        .btn-primary:hover { border-color: #14b8a6; color: #14b8a6; }
-        .section-padding { padding: 80px 0; }
-        .bg-darker { background-color: #020617; }
-        .border-t-custom { border-top: 1px solid #1e293b; }
-        .section-header { margin-bottom: 48px; }
-        .section-header.center { text-align: center; }
-        .section-tag { font-size: 0.75rem; font-family: monospace; text-transform: uppercase; color: #2dd4bf; margin-bottom: 8px; display: block; }
-        .section-title { font-size: 2.25rem; font-weight: 700; color: #ffffff; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
-        .card { background-color: #0f172a; border: 1px solid #1e293b; padding: 32px; border-radius: 16px; }
-        .card:hover { border-color: rgba(20, 184, 166, 0.4); }
-        .card-num { width: 44px; height: 44px; background-color: rgba(20, 184, 166, 0.1); color: #2dd4bf; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: monospace; font-weight: bold; margin-bottom: 20px; font-size: 1.25rem; }
-        .card h3 { font-size: 1.35rem; font-weight: bold; margin-bottom: 16px; color: #ffffff; }
-        .card p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 24px; }
-        .tags-container { display: flex; flex-wrap: wrap; gap: 8px; }
-        .card-tag { background-color: #1e293b; color: #2dd4bf; font-size: 0.75rem; font-family: monospace; padding: 4px 12px; border-radius: 6px; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 32px; }
-        .metric-card { background-color: #020617; border: 1px solid #1e293b; padding: 24px; border-radius: 16px; display: flex; align-items: center; justify-content: center; }
-        .metric-card img { width: 100%; height: auto; display: block; }
-        .lang-box { background-color: #020617; border: 1px solid #1e293b; padding: 32px; border-radius: 16px; width: 100%; }
-        .lang-item { margin-bottom: 18px; }
-        .lang-info { display: flex; justify-content: space-between; font-size: 0.85rem; font-family: monospace; margin-bottom: 4px; }
-        .lang-bar-bg { background-color: #1e293b; height: 8px; border-radius: 4px; width: 100%; overflow: hidden; }
-        .lang-bar-fill { background: linear-gradient(to right, #2dd4bf, #10b981); height: 100%; border-radius: 4px; }
-        .timeline-wrapper { border-left: 2px solid #1e293b; padding-left: 40px; margin-left: 8px; }
-        .timeline-item { position: relative; margin-bottom: 48px; }
-        .timeline-dot { position: absolute; left: -49px; top: 4px; width: 16px; height: 16px; background-color: #14b8a6; border-radius: 50%; border: 4px solid #020617; }
-        .timeline-tag { font-size: 0.75rem; font-family: monospace; color: #2dd4bf; background-color: rgba(20, 184, 166, 0.1); padding: 4px 12px; border-radius: 6px; }
-        .timeline-item h3 { font-size: 1.5rem; font-weight: bold; margin-top: 12px; color: #ffffff; }
-        .timeline-sub { font-size: 0.95rem; color: #94a3b8; margin-bottom: 16px; }
-        .timeline-desc { color: #64748b; font-size: 0.95rem; }
-        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .contact-card { background-color: #1e293b; border: 1px solid #334155; padding: 24px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; }
-        .contact-card:hover { border-color: #14b8a6; background-color: #0f172a; }
-        .contact-label { font-size: 0.75rem; font-family: monospace; color: #64748b; margin-bottom: 8px; text-transform: uppercase; }
-        .contact-val { font-size: 0.9rem; font-weight: bold; color: #e2e8f0; }
-        footer { background-color: #020617; padding: 40px 0; border-top: 1px solid #1e293b; text-align: center; font-size: 0.8rem; color: #475569; font-family: monospace; }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .grid-2 { grid-template-columns: 1fr; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xadreque Alfeu Zandamela — Engenharia de Software e Redes</title>
+<meta name="description" content="Engenheiro de software e especialista em redes em Moçambique. Plataformas em produção para instituições, comércio e agricultura. Infraestrutura Cisco, Oracle e Laravel.">
+<meta name="author" content="Xadreque Alfeu Zandamela">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xadreque Alfeu Zandamela — Engenharia de Software e Redes">
+<meta property="og:description" content="Software que não precisa de mim para continuar a funcionar.">
+<meta property="og:locale" content="pt_MZ">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23060B18'/><text y='68' x='50' text-anchor='middle' font-size='58' font-family='monospace' fill='%232DD4BF'>X</text></svg>">
+
+<style>
+/* ═══════════════ TOKENS ═══════════════ */
+:root {
+  --void:#060B18; --surface:#0D1526; --surface-hi:#121C31;
+  --line:#1B2740; --line-hi:#2A3A5C;
+  --ink:#E8EDF7; --muted:#8195B4; --dim:#5A6C8C;
+  --signal:#2DD4BF; --signal-deep:#0E9384;
+  --display:'Space Grotesk',system-ui,sans-serif;
+  --body:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+body{background:var(--void);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:var(--signal);color:var(--void)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:3px}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* ═══════════════ NAV ═══════════════ */
+.nav{position:fixed;inset:0 0 auto 0;height:68px;z-index:200;background:rgba(6,11,24,.72);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid transparent;transition:border-color .3s,background .3s}
+.nav.scrolled{border-bottom-color:var(--line);background:rgba(6,11,24,.93)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:100%}
+.mark{font-family:var(--mono);font-size:.82rem;font-weight:500;color:var(--signal);letter-spacing:.04em;display:inline-flex;align-items:center;gap:.5rem}
+.mark-dot{width:6px;height:6px;border-radius:50%;background:var(--signal);animation:beacon 2.6s ease-out infinite}
+@keyframes beacon{0%{box-shadow:0 0 0 0 rgba(45,212,191,.5)}70%{box-shadow:0 0 0 7px rgba(45,212,191,0)}100%{box-shadow:0 0 0 0 rgba(45,212,191,0)}}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);transition:color .2s;position:relative;padding:4px 0}
+.nav-links a::after{content:'';position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--signal);transition:right .3s var(--ease)}
+.nav-links a:hover,.nav-links a.here{color:var(--signal)}
+.nav-links a.here::after{right:0}
+.nav-cta{font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;padding:8px 18px;border:1px solid var(--line-hi);border-radius:4px;color:var(--ink);white-space:nowrap;transition:border-color .2s,color .2s,background .2s}
+.nav-cta:hover{border-color:var(--signal);color:var(--signal);background:rgba(45,212,191,.07)}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;width:0;background:linear-gradient(90deg,var(--signal-deep),var(--signal))}
+.burger{display:none;background:none;border:1px solid var(--line-hi);border-radius:4px;padding:9px 11px;cursor:pointer}
+.burger span{display:block;width:17px;height:1.5px;background:var(--ink);transition:transform .25s,opacity .25s}
+.burger span+span{margin-top:4px}
+.burger.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:128px 0 88px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hero-bg::before{content:'';position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:68px 68px;opacity:.38;mask-image:radial-gradient(ellipse 78% 62% at 22% 42%,#000 12%,transparent 74%);-webkit-mask-image:radial-gradient(ellipse 78% 62% at 22% 42%,#000 12%,transparent 74%)}
+.hero-bg::after{content:'';position:absolute;width:640px;height:640px;top:-180px;right:-160px;border-radius:50%;background:radial-gradient(circle,rgba(45,212,191,.13) 0%,transparent 66%);filter:blur(46px)}
+.hero-grid{position:relative;display:grid;grid-template-columns:1fr;gap:56px}
+@media(min-width:940px){.hero-grid{grid-template-columns:1.6fr .9fr;gap:72px;align-items:center}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal);margin-bottom:24px}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--signal);opacity:.6}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.5rem,6.8vw,4.3rem);line-height:1.02;letter-spacing:-.035em;margin-bottom:26px}
+.hero h1 .surname{color:var(--signal);display:block}
+
+/* Slogan — a tese da página */
+.slogan{position:relative;font-family:var(--display);font-weight:500;font-size:clamp(1.22rem,2.5vw,1.62rem);line-height:1.36;letter-spacing:-.018em;color:var(--ink);max-width:25ch;margin-bottom:24px;padding-left:20px}
+.slogan::before{content:'';position:absolute;left:0;top:.25em;bottom:.25em;width:2px;background:linear-gradient(180deg,var(--signal),transparent)}
+.slogan em{font-style:normal;color:var(--signal)}
+
+.hero-lede{color:var(--muted);font-size:1.02rem;max-width:48ch;margin-bottom:36px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:.82rem;letter-spacing:.04em;padding:13px 24px;border-radius:5px;border:1px solid var(--line-hi);transition:border-color .2s,color .2s,background .2s,transform .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--signal);border-color:var(--signal);color:var(--void);font-weight:500}
+.btn-solid:hover{background:#45E0CD;border-color:#45E0CD}
+.btn-line:hover{border-color:var(--signal);color:var(--signal);background:rgba(45,212,191,.06)}
+
+/* ═══════════════ PAINEL ═══════════════ */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--surface-hi)}
+.panel-head span{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.panel-live{display:inline-flex;align-items:center;gap:6px;color:var(--signal)!important}
+.panel-live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--signal);animation:beacon 2.6s ease-out infinite}
+.panel-body{padding:6px 18px 14px}
+.row{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row-key{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.row-val{font-family:var(--mono);font-size:.82rem;color:var(--ink);text-align:right}
+.row-val.ok{color:var(--signal)}
+.row-val.big{font-size:1.1rem;font-weight:500;color:var(--signal)}
+
+/* ═══════════════ SECÇÕES ═══════════════ */
+.band{padding:104px 0;border-top:1px solid var(--line)}
+.band-alt{background:#04080F}
+.head{margin-bottom:52px;max-width:60ch}
+.hop{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.hop-num{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--void);background:var(--signal);padding:2px 8px;border-radius:3px;font-weight:500}
+.hop-label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.head h2{font-family:var(--display);font-weight:700;font-size:clamp(1.85rem,3.9vw,2.6rem);letter-spacing:-.028em;line-height:1.14}
+.head p{color:var(--muted);margin-top:16px;font-size:1.02rem}
+
+/* ═══════════════ PROJECTOS ═══════════════ */
+.works{display:grid;gap:26px}
+@media(min-width:900px){.works{grid-template-columns:1fr 1fr}}
+.work{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .3s var(--ease)}
+.work:hover{border-color:rgba(45,212,191,.34);transform:translateY(-4px)}
+
+/* ── Carrossel ── */
+.shots{position:relative;aspect-ratio:16/10;background:var(--void);overflow:hidden;border-bottom:1px solid var(--line)}
+.shots-track{display:flex;height:100%;transition:transform .5s var(--ease)}
+.slide{position:relative;flex:0 0 100%;height:100%;background:var(--void)}
+.slide img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.slide.empty img{display:none}
+.slide.empty::after{content:attr(data-hint);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:repeating-linear-gradient(45deg,transparent 0 11px,rgba(27,39,64,.5) 11px 22px),var(--void)}
+.shots-nav{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;border:1px solid var(--line-hi);background:rgba(6,11,24,.78);backdrop-filter:blur(6px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s,background .2s,border-color .2s;z-index:2}
+.work:hover .shots-nav,.shots-nav:focus-visible{opacity:1}
+.shots-nav:hover{background:var(--signal);border-color:var(--signal);color:var(--void)}
+.shots-nav.prev{left:12px}
+.shots-nav.next{right:12px}
+.shots-dots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2}
+.dot{width:6px;height:6px;border-radius:50%;border:0;padding:0;cursor:pointer;background:rgba(232,237,247,.28);transition:background .2s,width .2s}
+.dot.on{background:var(--signal);width:16px;border-radius:3px}
+.shots-count{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;color:var(--muted);background:rgba(6,11,24,.7);backdrop-filter:blur(6px);padding:3px 8px;border-radius:4px;z-index:2}
+
+/* ── Corpo do projecto ── */
+.work-body{padding:24px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
+.work-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.work-body h3{font-family:var(--display);font-size:1.2rem;font-weight:600;letter-spacing:-.015em}
+.work-kind{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;color:var(--signal);border:1px solid rgba(45,212,191,.28);background:rgba(45,212,191,.06);padding:3px 8px;border-radius:3px;white-space:nowrap}
+.work-body p{color:var(--muted);font-size:.93rem;flex:1}
+.work-body p em{font-style:italic;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;color:var(--dim);background:var(--void);border:1px solid var(--line);padding:3px 9px;border-radius:4px;transition:color .2s,border-color .2s}
+.work:hover .chip{color:var(--muted);border-color:var(--line-hi)}
+
+/* ═══════════════ STACK ═══════════════ */
+.layers{display:grid;gap:18px}
+.layer{display:grid;grid-template-columns:1fr;gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:30px;transition:border-color .25s,transform .25s var(--ease),background .25s}
+@media(min-width:860px){.layer{grid-template-columns:190px 1fr 250px;align-items:start;gap:34px}}
+.layer:hover{border-color:rgba(45,212,191,.38);transform:translateX(4px);background:var(--surface-hi)}
+.layer-id{display:flex;align-items:center;gap:12px}
+.layer-tier{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--signal);border:1px solid rgba(45,212,191,.3);background:rgba(45,212,191,.07);padding:3px 8px;border-radius:3px;white-space:nowrap}
+.layer-id h3{font-family:var(--display);font-size:1.16rem;font-weight:500;letter-spacing:-.01em}
+.layer p{color:var(--muted);font-size:.96rem}
+.layer:hover .chip{color:var(--signal);border-color:rgba(45,212,191,.28)}
+
+/* ═══════════════ SINAIS ═══════════════ */
+.signals{display:grid;gap:22px}
+@media(min-width:940px){.signals{grid-template-columns:380px 1fr;align-items:start}}
+.cards{display:grid;gap:22px}
+@media(min-width:620px){.cards{grid-template-columns:1fr 1fr}}
+@media(min-width:940px){.cards{grid-template-columns:1fr}}
+.metric{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:24px;display:flex;align-items:center;justify-content:center;min-height:200px;transition:border-color .25s}
+.metric:hover{border-color:var(--line-hi)}
+.metric img{width:100%;max-width:440px;height:auto}
+.note{font-family:var(--mono);font-size:.72rem;color:var(--dim);margin-top:22px;letter-spacing:.03em}
+
+/* ═══════════════ PERCURSO ═══════════════ */
+.route{position:relative;padding-left:34px}
+.route::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--signal) 0%,var(--line-hi) 34%,var(--line) 100%)}
+.node{position:relative;padding-bottom:46px}
+.node:last-child{padding-bottom:0}
+.node::before{content:'';position:absolute;left:-34px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--void);border:2px solid var(--line-hi)}
+.node.live::before{border-color:var(--signal);box-shadow:0 0 0 4px rgba(45,212,191,.12)}
+.node-kind{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.node h3{font-family:var(--display);font-size:1.32rem;font-weight:500;letter-spacing:-.015em;margin:9px 0 5px}
+.node-org{font-family:var(--mono);font-size:.8rem;color:var(--signal);margin-bottom:12px}
+.node p{color:var(--muted);font-size:.96rem;max-width:62ch}
+
+/* ═══════════════ CANAIS ═══════════════ */
+.cluster+.cluster{margin-top:44px}
+.cluster-label{display:flex;align-items:center;gap:14px;margin-bottom:20px;font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.cluster-label::after{content:'';flex:1;height:1px;background:var(--line)}
+.channels{display:grid;gap:14px}
+@media(min-width:620px){.channels{grid-template-columns:1fr 1fr}}
+@media(min-width:980px){.channels{grid-template-columns:repeat(4,1fr)}}
+.channel{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:22px 20px;display:flex;flex-direction:column;gap:7px;transition:border-color .25s,background .25s,transform .25s var(--ease)}
+.channel:hover{border-color:rgba(45,212,191,.4);background:var(--surface-hi);transform:translateY(-3px)}
+.channel-kind{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.channel-val{font-family:var(--mono);font-size:.84rem;color:var(--ink);word-break:break-word;transition:color .25s}
+.channel:hover .channel-val{color:var(--signal)}
+
+/* ═══════════════ RODAPÉ ═══════════════ */
+.foot{border-top:1px solid var(--line);padding:34px 0;background:#04080F}
+.foot-inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:.72rem;color:var(--dim);letter-spacing:.04em}
+
+/* ═══════════════ MOTION ═══════════════ */
+.rise{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rise.seen{opacity:1;transform:none}
+.rise.d1{transition-delay:.07s}.rise.d2{transition-delay:.14s}
+.rise.d3{transition-delay:.21s}.rise.d4{transition-delay:.28s}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .rise{opacity:1;transform:none}
+  .shots-nav{opacity:1}
+}
+
+/* ═══════════════ MOBILE ═══════════════ */
+@media(max-width:860px){
+  .burger{display:block}
+  .nav-links{position:fixed;inset:68px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;background:rgba(6,11,24,.98);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:8px 28px 20px;transform:translateY(-12px);opacity:0;pointer-events:none;transition:transform .25s var(--ease),opacity .25s}
+  .nav-links.open{transform:none;opacity:1;pointer-events:auto}
+  .nav-links a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .nav-links a::after{display:none}
+  .nav-links .nav-cta{border:1px solid var(--line-hi);text-align:center;margin-top:14px;padding:13px}
+  .band{padding:76px 0}
+  .layer{padding:24px}
+  .shots-nav{opacity:1}
+}
+</style>
 </head>
+
 <body>
- <!-- 1. NAVEGAÇÃO -->
-    <nav class="navbar">
-        <div class="nav-container container">
-            <span class="logo">&lt;XADREQUE.ENG /&gt;</span>
-            <div class="nav-links">
-                <a href="#sobre">Sobre</a>
-                <a href="#competencias">Competências</a>
-                <a href="#desempenho">Desempenho</a>
-                <a href="#educacao">Percurso</a>
-                <a href="#contacto" class="btn-nav">Contacto</a>
-            </div>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#topo" class="mark"><span class="mark-dot"></span>xadreque.eng</a>
+    <div class="nav-links" id="menu">
+      <a href="#projectos">Projectos</a>
+      <a href="#stack">Stack</a>
+      <a href="#sinais">Sinais</a>
+      <a href="#percurso">Percurso</a>
+      <a href="#canais" class="nav-cta">Falar comigo</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="progress" id="progress"></div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<header class="hero" id="topo">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-grid">
+
+    <div>
+      <p class="eyebrow rise">Engenharia de software e redes</p>
+      <h1 class="rise d1">Xadreque Alfeu<span class="surname">Zandamela</span></h1>
+
+      <p class="slogan rise d2">
+        Software que não precisa de <em>mim</em> para continuar a funcionar.
+      </p>
+
+      <p class="hero-lede rise d3">
+        Construo os três níveis de um sistema — a rede por onde os dados passam,
+        a base de dados onde ficam, e a aplicação que os põe a trabalhar.
+        Depois entrego-os documentados, para que sobrevivam a mim.
+      </p>
+
+      <div class="hero-actions rise d4">
+        <a href="#projectos" class="btn btn-solid">Ver o que está em produção</a>
+        <a href="#canais" class="btn btn-line">Falar comigo</a>
+      </div>
+    </div>
+
+    <aside class="panel rise d4" aria-label="Resumo profissional">
+      <div class="panel-head"><span>Estado actual</span></div>
+      <div class="panel-body">
+        <div class="row"><span class="row-key">Base</span><span class="row-val">Moçambique</span></div>
+        <div class="row"><span class="row-key">Formação</span><span class="row-val">Eng. Informática · ISCTEM</span></div>
+        <div class="row"><span class="row-key">Certificação</span><span class="row-val">Cisco CCNA</span></div>
+        <div class="row"><span class="row-key">Plataformas</span><span class="row-val">9 entregues</span></div>
+        <div class="row"><span class="row-key">Projectos</span><span class="row-val ok">Aceito novos</span></div>
+      </div>
+    </aside>
+
+  </div>
+</header>
+
+<!--
+  ══════════ PROJECTOS ══════════
+  IMAGENS: coloque os screenshots em  img/<nome>-1.jpg , -2.jpg , -3.jpg
+  Enquanto o ficheiro não existir, o slide mostra um marcador tracejado
+  com o nome esperado — nada fica partido. Formato ideal: 16:10, 1600×1000.
+-->
+<section class="band band-alt" id="projectos">
+  <div class="wrap">
+
+    <div class="head rise">
+      <div class="hop"><span class="hop-num">01</span><span class="hop-label">Trabalho entregue</span></div>
+      <h2>Plataformas em produção</h2>
+      <p>Nove sistemas construídos de raiz — do modelo de dados à interface, do servidor
+         ao pagamento móvel. Cada um resolve um problema real de um cliente real.</p>
+    </div>
+
+    <div class="works">
+
+      <!-- ── LavaMoz ── -->
+      <article class="work rise">
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="slide" data-hint="lavamoz-1.jpg"><img src="img/lavamoz-1.jpg" alt="LavaMoz — ecrã principal"></figure>
+            <figure class="slide" data-hint="lavamoz-2.jpg"><img src="img/lavamoz-2.jpg" alt="LavaMoz — painel de gestão"></figure>
+            <figure class="slide" data-hint="lavamoz-3.jpg"><img src="img/lavamoz-3.jpg" alt="LavaMoz — assistente virtual"></figure>
+          </div>
         </div>
-    </nav>
-
- <!-- 2. SEÇÃO SOBRE -->
-    <header id="sobre" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="hero-badge">Engenheiro de Software & Especialista em Redes</span>
-                <h1>Xadreque Alfeu <span>Zandamela</span></h1>
-                <p>Profissional moçambicano focado na intersecção entre o desenvolvimento de sistemas escaláveis, administração avançada de bases de dados relacionais e infraestrutura de redes corporativas. Comprometido com a automação e robustez de software.</p>
-                <div class="hero-btns">
-                    <a href="#competencias" class="btn-primary">Ver Competências</a>
-        <a href="https://github.com" target="_blank" style="display: inline-block; background-color: #1e293b; border: 1px solid #334155; color: #f8fafc; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-family: monospace; font-size: 0.9rem;">://github.com</a>                </div>
-               
-            </div>
+        <div class="work-body">
+          <div class="work-top">
+            <h3>LavaMoz</h3>
+            <span class="work-kind">Serviços</span>
+          </div>
+          <p>
+            Plataforma de gestão de serviços com assistente virtual integrado. O chatbot
+            atende clientes em linguagem natural e encaminha pedidos directamente para o
+            fluxo operacional, sem passar por atendimento manual.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel 12</span><span class="chip">PostgreSQL</span>
+            <span class="chip">Claude API</span><span class="chip">Chatbot</span>
+          </div>
         </div>
-    </header>
-   <!-- 3. SEÇÃO COMPETÊNCIAS -->
-    <section id="competencias" class="section-padding bg-darker border-t-custom">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">// Stack Técnica</span>
-                <p class="section-title">Especializações de Engenharia</p>
-            </div>
-            <div class="grid-3">
-                <div class="card">
-                    <div class="card-num">01</div>
-                    <h3>Infraestrutura & Redes</h3>
-                    <p>Desenho, implementação e monitorização de redes de computadores com foco em ativos industriais baseados em arquiteturas Cisco CCNA.</p>
-                    <div class="tags-container"><span class="card-tag">Cisco CCNA</span><span class="card-tag">Switching</span><span class="card-tag">Routing</span></div>
-                </div>
-                <div class="card">
-                    <div class="card-num">02</div>
-                    <h3>Bases de Dados</h3>
-                    <p>Modelação relacional avançada e codificação de inteligência em Oracle Database com escrita de PL/SQL avançado corporativo.</p>
-                    <div class="tags-container"><span class="card-tag">Oracle DB</span><span class="card-tag">PL/SQL</span><span class="card-tag">Procedures</span></div>
-                </div>
-                <div class="card">
-                    <div class="card-num">03</div>
-                    <h3>Engenharia de Software</h3>
-                    <p>Construção de aplicações completas voltadas para o mercado, focando em arquiteturas web estáveis, APIs RESTful e Clean Code.</p>
-                    <div class="tags-container"><span class="card-tag">Web Dev</span><span class="card-tag">Tailwind CSS</span><span class="card-tag">Clean Code</span></div>
-                </div>
-            </div>
+      </article>
+
+      <!-- ── MaxakaMoyeni ── -->
+      <article class="work rise d1">
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="slide" data-hint="maxakamoyeni-1.jpg"><img src="img/maxakamoyeni-1.jpg" alt="MaxakaMoyeni — portal do gestor"></figure>
+            <figure class="slide" data-hint="maxakamoyeni-2.jpg"><img src="img/maxakamoyeni-2.jpg" alt="MaxakaMoyeni — ciclo de contribuições"></figure>
+            <figure class="slide" data-hint="maxakamoyeni-3.jpg"><img src="img/maxakamoyeni-3.jpg" alt="MaxakaMoyeni — membros do grupo"></figure>
+          </div>
         </div>
-    </section>
-
-    <!-- SEÇÃO DESEMPENHO -->
-    <section id="desempenho" class="section-padding border-t-custom">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">// Engenharia Métrica</span>
-                <p class="section-title">Atividade & Performance de Código</p>
-            </div>
-                <div class="grid-2">
-                <div class="metric-card">
-                    <img src="https://vercel.app" alt="Estatísticas Gerais do GitHub" />
-                </div>
-                <div class="metric-card">
-                    <img src="https://vercel.app" alt="Linguagens Mais Utilizadas" />
-                </div>
-            </div>
+        <div class="work-body">
+          <div class="work-top">
+            <h3>MaxakaMoyeni</h3>
+            <span class="work-kind">Fintech</span>
+          </div>
+          <p>
+            Digitalização do <em>xitique</em> — a poupança rotativa que movimenta dinheiro
+            real em Moçambique fora do sistema bancário. Gere ciclos, ordem de recebimento,
+            contribuições e histórico de cada membro, com portal separado para o gestor do grupo.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel</span><span class="chip">Blade</span>
+            <span class="chip">Poupança rotativa</span><span class="chip">Multi-grupo</span>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <!-- SEÇÃO TIMELINE -->
-    <section id="educacao" class="section-padding bg-darker border-t-custom">
-        <div class="container">
-            <div class="section-header center">
-                <span class="section-tag">// Percurso Histórico</span>
-                <p class="section-title">Formação & Projetos Estratégicos</p>
-            </div>
-
-            <div class="timeline-wrapper">
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #14b8a6;"></div>
-                    <span class="timeline-tag">Ensino Superior</span>
-                    <h3>Bacharelato em Engenharia Informática</h3>
-                    <p class="timeline-sub">ISCTEM — Instituto Superior de Ciências e Tecnologias de Moçambique</p>
-                    <p class="timeline-desc">Foco em engenharia de sistemas complexos, arquiteturas corporativas e desenvolvimento moderno.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #10b981;"></div>
-                    <span class="timeline-tag">Certificação Industrial</span>
-                    <h3>Formação Cisco CCNA</h3>
-                    <p class="timeline-sub">Cisco Networking Academy</p>
-                    <p class="timeline-desc">Domínio completo sobre roteamento, comutação de pacotes de dados, segurança lógica de perímetros e comunicação entre redes corporativas.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #3b82f6;"></div>
-                    <span class="timeline-tag">Ensino Médio Técnico</span>
-                    <h3>Técnico Médio em Sistemas Informáticos</h3>
-                    <p class="timeline-sub">ITC — Instituto dos Transportes e Comunicações</p>
-                    <p class="timeline-desc">Fundamentos rígidos de lógica de programação, manipulação de hardware de redes e administração básica de sistemas operativos.</p>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot" style="background-color: #a855f7;"></div>
-                    <span class="timeline-tag">Atuação de Mercado</span>
-                    <h3>Desenvolvimento & Infraestrutura Activa</h3>
-                    <p class="timeline-sub">Moçambique — Plataformas Comerciais e Voluntariado</p>
-                    <p class="timeline-desc">Desenvolvimento independente de aplicações comerciais integradas no mercado nacional. Cooperação voluntária com equipas de suporte técnico na configuração de infraestruturas locais de comunicações.</p>
-                </div>
-            </div>
+      <!-- ── Nhikela ── -->
+      <article class="work rise d2">
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="slide" data-hint="nhikela-1.jpg"><img src="img/nhikela-1.jpg" alt="Nhikela — montra pública"></figure>
+            <figure class="slide" data-hint="nhikela-2.jpg"><img src="img/nhikela-2.jpg" alt="Nhikela — painel com indicadores"></figure>
+            <figure class="slide" data-hint="nhikela-3.jpg"><img src="img/nhikela-3.jpg" alt="Nhikela — checkout e pagamento móvel"></figure>
+          </div>
         </div>
-    </section>
-
-    <!-- SEÇÃO HUB CONTACTO -->
-    <section id="contacto" class="section-padding border-t-custom">
-        <div class="container">
-            <div class="section-header center">
-                <span class="section-tag">// Hub de Contacto</span>
-                <p class="section-title">Canais de Comunicação Direta</p>
-            </div>
-            <p class="contact-desc">Seja para discutir o desenvolvimento de uma plataforma ou auditoria em infraestrutura Cisco/Oracle, escolha o canal ideal.</p>
-            
-            <div class="grid-4">
-                <a href="mailto:tecnicozanda@gmail.com" class="contact-card">
-                    <span class="contact-label">E-mail</span>
-                    <span class="contact-val">tecnicozanda@gmail.com</span>
-                </a>
-                
-                <a href="tel:+258842510516" class="contact-card">
-                    <span class="contact-label">Contacto Móvel</span>
-                    <span class="contact-val">+258 84 251 0516</span>
-                </a>
-
-                <a href="https://linkedin.com" target="_blank" class="contact-card">
-                    <span class="contact-label">LinkedIn</span>
-                    <span class="contact-val">Xadreque Alfeu</span>
-                </a>
-
-                <a href="https://github.io" target="_blank" class="contact-card active-web">
-                    <span class="contact-label">Website Oficial</span>
-                    <span class="contact-val">Visitar Portfólio</span>
-                </a>
-            </div>
+        <div class="work-body">
+          <div class="work-top">
+            <h3>Nhikela</h3>
+            <span class="work-kind">Comércio B2B</span>
+          </div>
+          <p>
+            Plataforma multi-instituição de fornecimento de material informático e de escritório.
+            Cada instituição configura marca, catálogo e dados fiscais pelas próprias definições —
+            nada está fixo em ficheiros. Inclui stock com alerta de ruptura, facturação,
+            pagamentos M-Pesa e e-Mola, e interface bilingue.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel</span><span class="chip">Alpine.js</span>
+            <span class="chip">M-Pesa / e-Mola</span><span class="chip">Multi-tenant</span>
+            <span class="chip">PT / EN</span>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Xadreque Alfeu Zandamela. Hospedado de forma segura no GitHub Pages.</p>
+      <!-- ── AgroMoz ── -->
+      <article class="work rise">
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="slide" data-hint="agromoz-1.jpg"><img src="img/agromoz-1.jpg" alt="AgroMoz — catálogo de culturas"></figure>
+            <figure class="slide" data-hint="agromoz-2.jpg"><img src="img/agromoz-2.jpg" alt="AgroMoz — ficha agronómica"></figure>
+            <figure class="slide" data-hint="agromoz-3.jpg"><img src="img/agromoz-3.jpg" alt="AgroMoz — versão para telefone básico"></figure>
+          </div>
         </div>
-    </footer>
+        <div class="work-body">
+          <div class="work-top">
+            <h3>AgroMoz</h3>
+            <span class="work-kind">Agricultura</span>
+          </div>
+          <p>
+            Sistema de informação agronómica com 73 culturas em 9 categorias, cada uma com
+            ficha técnica completa. A decisão de arquitectura que o define: uma camada para
+            KaiOS, para chegar aos telefones básicos onde está a maioria dos agricultores
+            moçambicanos — e não ao smartphone que eles não têm.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel 11</span><span class="chip">MySQL</span>
+            <span class="chip">KaiOS</span><span class="chip">73 culturas</span>
+          </div>
+        </div>
+      </article>
 
-    
-</body></html>
+      <!-- ── Gestão de Empreendedoras ── -->
+      <article class="work rise d1">
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="slide" data-hint="empreendedoras-1.jpg"><img src="img/empreendedoras-1.jpg" alt="Portal da empreendedora — dashboard"></figure>
+            <figure class="slide" data-hint="empreendedoras-2.jpg"><img src="img/empreendedoras-2.jpg" alt="Gestão de negócios e movimentos"></figure>
+            <figure class="slide" data-hint="empreendedoras-3.jpg"><img src="img/empreendedoras-3.jpg" alt="Relatórios por província"></figure>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-top">
+            <h3>Gestão de Empreendedoras</h3>
+            <span class="work-kind">Programa nacional</span>
+          </div>
+          <p>
+            Plataforma de acompanhamento com portal próprio para a empreendedora e administração
+            descentralizada por província. O núcleo é o isolamento de dados: cada administrador
+            provincial vê apenas a sua província, e só o super-administrador atravessa fronteiras.
+            Integra câmbios do Banco de Moçambique, inflação do INE e meteorologia por região.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel 13</span><span class="chip">PHP 8.3</span>
+            <span class="chip">Spatie Roles</span><span class="chip">APIs públicas</span>
+            <span class="chip">Multi-província</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── SIGEC ── -->
+      <article class="work rise d2">
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="slide" data-hint="sigec-1.jpg"><img src="img/sigec-1.jpg" alt="SIGEC — ecrã principal"></figure>
+            <figure class="slide" data-hint="sigec-2.jpg"><img src="img/sigec-2.jpg" alt="SIGEC — módulo de gestão"></figure>
+            <figure class="slide" data-hint="sigec-3.jpg"><img src="img/sigec-3.jpg" alt="SIGEC — relatórios"></figure>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-top">
+            <h3>SIGEC</h3>
+            <span class="work-kind">Institucional</span>
+          </div>
+          <!-- AJUSTE ESTE PARÁGRAFO: descreva o domínio exacto do SIGEC -->
+          <p>
+            Sistema institucional de gestão construído sobre Laravel e PostgreSQL, com os
+            padrões de arquitectura que passaram a servir de base aos restantes projectos
+            do ecossistema — permissões, auditoria e separação de ambientes.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel 12</span><span class="chip">PostgreSQL</span>
+            <span class="chip">Auditoria</span><span class="chip">Permissões</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Salão Digital ── -->
+      <article class="work rise">
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="slide" data-hint="salao-1.jpg"><img src="img/salao-1.jpg" alt="Salão Digital — site público"></figure>
+            <figure class="slide" data-hint="salao-2.jpg"><img src="img/salao-2.jpg" alt="Salão Digital — motor de agenda"></figure>
+            <figure class="slide" data-hint="salao-3.jpg"><img src="img/salao-3.jpg" alt="Salão Digital — marcação ao domicílio"></figure>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-top">
+            <h3>Salão Digital</h3>
+            <span class="work-kind">Marcações</span>
+          </div>
+          <p>
+            Sistema de marcações com motor de agenda próprio, avisos por SMS e WhatsApp,
+            programa de fidelidade e pagamento móvel. Inclui marcação ao domicílio com
+            protocolo de segurança — aviso legal e duas testemunhas notificadas por SMS
+            no momento da confirmação.
+          </p>
+          <div class="chips">
+            <span class="chip">Laravel</span><span class="chip">Agenda</span>
+            <span class="chip">SMS / WhatsApp</span><span class="chip">Fidelidade</span>
+            <span class="chip">PT / EN</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Website Jeff ── -->
+      <article class="work rise d1">
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="slide" data-hint="jeff-1.jpg"><img src="img/jeff-1.jpg" alt="Website Jeff — página inicial"></figure>
+            <figure class="slide" data-hint="jeff-2.jpg"><img src="img/jeff-2.jpg" alt="Website Jeff — secção interna"></figure>
+            <figure class="slide" data-hint="jeff-3.jpg"><img src="img/jeff-3.jpg" alt="Website Jeff — versão móvel"></figure>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-top">
+            <h3>Website Jeff</h3>
+            <span class="work-kind">Web institucional</span>
+          </div>
+          <!-- AJUSTE ESTE PARÁGRAFO: cliente, objectivo e resultado -->
+          <p>
+            Site institucional desenhado e desenvolvido de raiz, com estrutura pensada para
+            leitura rápida em ligações lentas e desempenho tratado como requisito, não como
+            optimização posterior.
+          </p>
+          <div class="chips">
+            <span class="chip">Web</span><span class="chip">Responsivo</span>
+            <span class="chip">Performance</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Website XNAE ── -->
+      <article class="work rise d2">
+        <div class="shots" data-shots>
+          <div class="shots-track">
+            <figure class="slide" data-hint="xnae-1.jpg"><img src="img/xnae-1.jpg" alt="Website XNAE — página inicial"></figure>
+            <figure class="slide" data-hint="xnae-2.jpg"><img src="img/xnae-2.jpg" alt="Website XNAE — serviços"></figure>
+            <figure class="slide" data-hint="xnae-3.jpg"><img src="img/xnae-3.jpg" alt="Website XNAE — contacto"></figure>
+          </div>
+        </div>
+        <div class="work-body">
+          <div class="work-top">
+            <h3>Website XNAE</h3>
+            <span class="work-kind">Marca própria</span>
+          </div>
+          <!-- AJUSTE ESTE PARÁGRAFO: posicionamento e oferta da XNAE -->
+          <p>
+            Presença digital da XNAE, a marca sob a qual entrego software. Reúne serviços,
+            processo de trabalho e casos concluídos, e funciona como porta de entrada
+            comercial para os projectos desenvolvidos.
+          </p>
+          <div class="chips">
+            <span class="chip">Web</span><span class="chip">Identidade</span>
+            <span class="chip">Marca própria</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ STACK ══════════ -->
+<section class="band" id="stack">
+  <div class="wrap">
+    <div class="head rise">
+      <div class="hop"><span class="hop-num">02</span><span class="hop-label">Stack técnica</span></div>
+      <h2>Três camadas, um sistema</h2>
+      <p>A maioria das falhas acontece nas fronteiras entre camadas. Trabalho nas três,
+         o que significa que consigo diagnosticar onde o problema realmente começa.</p>
+    </div>
+
+    <div class="layers">
+      <article class="layer rise">
+        <div class="layer-id"><span class="layer-tier">Camada 1</span><h3>Infraestrutura</h3></div>
+        <p>Desenho, implementação e monitorização de redes corporativas. Segmentação,
+           encaminhamento e resolução de problemas em arquitecturas Cisco.</p>
+        <div class="chips">
+          <span class="chip">Cisco CCNA</span><span class="chip">Switching</span>
+          <span class="chip">Routing</span><span class="chip">Segmentação</span>
+        </div>
+      </article>
+
+      <article class="layer rise d1">
+        <div class="layer-id"><span class="layer-tier">Camada 2</span><h3>Dados</h3></div>
+        <p>Modelação relacional e lógica de negócio dentro da própria base de dados,
+           com PL/SQL para procedimentos, gatilhos e rotinas de integridade.</p>
+        <div class="chips">
+          <span class="chip">Oracle DB</span><span class="chip">PostgreSQL</span>
+          <span class="chip">PL/SQL</span><span class="chip">Modelação</span>
+        </div>
+      </article>
+
+      <article class="layer rise d2">
+        <div class="layer-id"><span class="layer-tier">Camada 3</span><h3>Aplicação</h3></div>
+        <p>Aplicações web completas, do modelo de dados à interface, com APIs REST
+           e código pensado para durar mais do que a primeira entrega.</p>
+        <div class="chips">
+          <span class="chip">Laravel</span><span class="chip">APIs REST</span>
+          <span class="chip">Alpine.js</span><span class="chip">Clean Code</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SINAIS ══════════ -->
+<section class="band band-alt" id="sinais">
+  <div class="wrap">
+    <div class="head rise">
+      <div class="hop"><span class="hop-num">03</span><span class="hop-label">Sinais</span></div>
+      <h2>Números em directo</h2>
+      <p>Tráfego deste site e actividade no repositório, lidos das APIs no momento
+         em que abriu a página.</p>
+    </div>
+
+    <div class="signals">
+      <aside class="panel rise" aria-label="Métricas em directo">
+        <div class="panel-head">
+          <span>Leitura</span>
+          <span class="panel-live" id="estado">a ligar</span>
+        </div>
+        <div class="panel-body">
+          <div class="row"><span class="row-key">Visitas totais</span><span class="row-val big" data-metric="visitas">—</span></div>
+          <div class="row"><span class="row-key">Visitas hoje</span><span class="row-val" data-metric="visitasHoje">—</span></div>
+          <div class="row"><span class="row-key">Repositórios</span><span class="row-val" data-metric="repositorios">—</span></div>
+          <div class="row"><span class="row-key">Estrelas</span><span class="row-val" data-metric="estrelas">—</span></div>
+          <div class="row"><span class="row-key">Seguidores</span><span class="row-val" data-metric="seguidores">—</span></div>
+          <div class="row"><span class="row-key">No GitHub desde</span><span class="row-val" data-metric="desde">—</span></div>
+        </div>
+      </aside>
+
+      <div class="cards">
+        <div class="metric rise d1">
+          <img src="https://xadreque-stats.vercel.app/api?username=xadreque&show_icons=true&include_all_commits=true&count_private=true&hide_border=true&bg_color=00000000&title_color=2DD4BF&text_color=8195B4&icon_color=2DD4BF"
+               alt="Estatísticas gerais do GitHub de xadreque" loading="lazy">
+        </div>
+        <div class="metric rise d2">
+          <img src="https://xadreque-stats.vercel.app/api/top-langs/?username=xadreque&layout=compact&langs_count=8&hide_border=true&bg_color=00000000&title_color=2DD4BF&text_color=8195B4"
+               alt="Linguagens mais utilizadas por xadreque" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <p class="note rise d3">
+      Parte do trabalho vive em repositórios privados de clientes e não entra nestes números.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════ PERCURSO ══════════ -->
+<section class="band" id="percurso">
+  <div class="wrap">
+    <div class="head rise">
+      <div class="hop"><span class="hop-num">04</span><span class="hop-label">Percurso</span></div>
+      <h2>Formação e prática</h2>
+    </div>
+
+    <div class="route">
+      <article class="node live rise">
+        <span class="node-kind">Actuação de mercado</span>
+        <h3>Desenvolvimento e infraestrutura</h3>
+        <p class="node-org">Moçambique · em curso</p>
+        <p>Desenvolvimento independente de plataformas comerciais e institucionais para o
+           mercado nacional, e cooperação com equipas de suporte técnico na configuração
+           de infraestruturas locais de comunicações.</p>
+      </article>
+
+      <article class="node rise d1">
+        <span class="node-kind">Ensino superior</span>
+        <h3>Bacharelato em Engenharia Informática</h3>
+        <p class="node-org">ISCTEM · Instituto Superior de Ciências e Tecnologias de Moçambique</p>
+        <p>Engenharia de sistemas, arquitecturas corporativas e desenvolvimento de software.</p>
+      </article>
+
+      <article class="node rise d2">
+        <span class="node-kind">Certificação industrial</span>
+        <h3>Cisco CCNA</h3>
+        <p class="node-org">Cisco Networking Academy</p>
+        <p>Encaminhamento, comutação de pacotes, segurança de perímetro e comunicação
+           entre redes corporativas.</p>
+      </article>
+
+      <article class="node rise d3">
+        <span class="node-kind">Ensino médio técnico</span>
+        <h3>Técnico Médio em Sistemas Informáticos</h3>
+        <p class="node-org">ITC · Instituto dos Transportes e Comunicações</p>
+        <p>Lógica de programação, hardware de rede e administração de sistemas operativos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CANAIS ══════════ -->
+<section class="band band-alt" id="canais">
+  <div class="wrap">
+    <div class="head rise">
+      <div class="hop"><span class="hop-num">05</span><span class="hop-label">Canais</span></div>
+      <h2>Onde me encontrar</h2>
+      <p>Para desenvolvimento de uma plataforma, revisão de infraestrutura Cisco
+         ou trabalho em base de dados — qualquer destes canais chega a mim.</p>
+    </div>
+
+    <div class="cluster rise">
+      <p class="cluster-label">Contacto directo</p>
+      <div class="channels">
+        <a href="mailto:tecnicozanda@gmail.com" class="channel">
+          <span class="channel-kind">E-mail</span><span class="channel-val">tecnicozanda@gmail.com</span>
+        </a>
+        <a href="https://wa.me/258842510516" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">WhatsApp</span><span class="channel-val">+258 84 251 0516</span>
+        </a>
+        <a href="tel:+258842510516" class="channel">
+          <span class="channel-kind">Telefone</span><span class="channel-val">+258 84 251 0516</span>
+        </a>
+        <!-- Conta gratuita em cal.com — substitua o link -->
+        <a href="https://cal.com/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">Agendar chamada</span><span class="channel-val">30 min · cal.com</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="cluster rise d1">
+      <p class="cluster-label">Trabalho e credenciais</p>
+      <div class="channels">
+        <a href="https://github.com/xadreque" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">GitHub</span><span class="channel-val">@xadreque</span>
+        </a>
+        <!-- Substitua pelo URL real do seu perfil -->
+        <a href="https://www.linkedin.com/in/SEU-PERFIL" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">LinkedIn</span><span class="channel-val">Xadreque Alfeu</span>
+        </a>
+        <!-- Coloque o PDF na raiz do repositório com este nome -->
+        <a href="./cv-xadreque-zandamela.pdf" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">Currículo</span><span class="channel-val">Descarregar PDF</span>
+        </a>
+        <!-- A Cisco emite o badge do CCNA via Credly -->
+        <a href="https://www.credly.com/users/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">Certificações</span><span class="channel-val">Credly · CCNA</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="cluster rise d2">
+      <p class="cluster-label">Presença técnica</p>
+      <div class="channels">
+        <a href="https://dev.to/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">Artigos</span><span class="channel-val">dev.to</span>
+        </a>
+        <a href="https://stackoverflow.com/users/SEU-ID" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">Stack Overflow</span><span class="channel-val">Perfil</span>
+        </a>
+        <a href="https://gitlab.com/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">GitLab</span><span class="channel-val">Espelho de repositórios</span>
+        </a>
+        <a href="https://x.com/SEU-UTILIZADOR" target="_blank" rel="noopener" class="channel">
+          <span class="channel-kind">X</span><span class="channel-val">@seu_utilizador</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════ RODAPÉ ══════════ -->
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span>© <span id="ano"></span> Xadreque Alfeu Zandamela</span>
+    <span>Moçambique</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Se o site ficar no GitHub Pages e a função no Vercel, troque por:
+     'https://SEU-PROJECTO.vercel.app/api/metrics' */
+  var ENDPOINT = '/api/metrics';
+
+  var lento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ═══════ NAV ═══════ */
+  var nav = document.getElementById('nav');
+  var progress = document.getElementById('progress');
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('menu');
+  var links = Array.prototype.slice.call(menu.querySelectorAll('a[href^="#"]'));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+
+  document.getElementById('ano').textContent = new Date().getFullYear();
+
+  function onScroll() {
+    var y = window.scrollY;
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    nav.classList.toggle('scrolled', y > 12);
+    progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    var active = -1;
+    sections.forEach(function (s, i) { if (s.getBoundingClientRect().top <= 140) active = i; });
+    links.forEach(function (a, i) { a.classList.toggle('here', i === active); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  burger.addEventListener('click', function () {
+    var open = menu.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A') {
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  /* ═══════ REVELAÇÃO AO SCROLL ═══════ */
+  var items = document.querySelectorAll('.rise');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('seen'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('seen'); });
+  }
+
+  /* ═══════ CARROSSEL DE SCREENSHOTS ═══════ */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-shots]'), function (box) {
+    var track  = box.querySelector('.shots-track');
+    var slides = Array.prototype.slice.call(box.querySelectorAll('.slide'));
+    if (!track || slides.length === 0) return;
+
+    /* Marca como vazio qualquer slide cuja imagem ainda não exista */
+    slides.forEach(function (slide) {
+      var img = slide.querySelector('img');
+      if (!img) { slide.classList.add('empty'); return; }
+      img.addEventListener('error', function () { slide.classList.add('empty'); });
+      if (img.complete && img.naturalWidth === 0) slide.classList.add('empty');
+    });
+
+    if (slides.length < 2) return;
+
+    var i = 0, timer = null;
+
+    var prev = document.createElement('button');
+    prev.className = 'shots-nav prev';
+    prev.type = 'button';
+    prev.setAttribute('aria-label', 'Imagem anterior');
+    prev.innerHTML = '<svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M7.3 2.2a.75.75 0 0 1 0 1.1L4.6 6l2.7 2.7a.75.75 0 1 1-1.1 1.1L2.9 6.5a.75.75 0 0 1 0-1.1l3.3-3.2a.75.75 0 0 1 1.1 0Z"/></svg>';
+
+    var next = document.createElement('button');
+    next.className = 'shots-nav next';
+    next.type = 'button';
+    next.setAttribute('aria-label', 'Imagem seguinte');
+    next.innerHTML = '<svg width="11" height="11" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M4.7 2.2a.75.75 0 0 0 0 1.1L7.4 6l-2.7 2.7a.75.75 0 1 0 1.1 1.1l3.3-3.3a.75.75 0 0 0 0-1.1L5.8 2.2a.75.75 0 0 0-1.1 0Z"/></svg>';
+
+    var count = document.createElement('div');
+    count.className = 'shots-count';
+
+    var dots = document.createElement('div');
+    dots.className = 'shots-dots';
+    var dotEls = slides.map(function (_, n) {
+      var d = document.createElement('button');
+      d.className = 'dot';
+      d.type = 'button';
+      d.setAttribute('aria-label', 'Ir para a imagem ' + (n + 1));
+      d.addEventListener('click', function () { ir(n); parar(); });
+      dots.appendChild(d);
+      return d;
+    });
+
+    box.appendChild(prev); box.appendChild(next);
+    box.appendChild(count); box.appendChild(dots);
+
+    function ir(n) {
+      i = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      dotEls.forEach(function (d, k) { d.classList.toggle('on', k === i); });
+      count.textContent = (i + 1) + ' / ' + slides.length;
+    }
+    function parar() { if (timer) { clearInterval(timer); timer = null; } }
+    function andar() { if (!timer && !lento) timer = setInterval(function () { ir(i + 1); }, 5200); }
+
+    prev.addEventListener('click', function () { ir(i - 1); parar(); });
+    next.addEventListener('click', function () { ir(i + 1); parar(); });
+
+    box.setAttribute('tabindex', '0');
+    box.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft')  { ir(i - 1); parar(); }
+      if (e.key === 'ArrowRight') { ir(i + 1); parar(); }
+    });
+
+    var x0 = null;
+    box.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 44) { ir(dx < 0 ? i + 1 : i - 1); parar(); }
+      x0 = null;
+    }, { passive: true });
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (ents) {
+        ents.forEach(function (en) { if (en.isIntersecting) { andar(); } else { parar(); } });
+      }, { threshold: 0.4 }).observe(box);
+    }
+    box.addEventListener('mouseenter', parar);
+    box.addEventListener('mouseleave', andar);
+
+    ir(0);
+  });
+
+  /* ═══════ MÉTRICAS EM DIRECTO ═══════ */
+  function escrever(el, valor) {
+    if (typeof valor !== 'number' || lento) { el.textContent = valor; return; }
+    var passos = 26, n = 0;
+    var t = setInterval(function () {
+      n++;
+      el.textContent = Math.round(valor * (n / passos)).toLocaleString('pt-PT');
+      if (n >= passos) { clearInterval(t); el.textContent = valor.toLocaleString('pt-PT'); }
+    }, 22);
+  }
+
+  var estado = document.getElementById('estado');
+
+  fetch(ENDPOINT, { headers: { Accept: 'application/json' } })
+    .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(function (d) {
+      var mapa = {
+        visitas:      d.visitas,
+        visitasHoje:  d.visitasHoje,
+        repositorios: d.github && d.github.repositorios,
+        estrelas:     d.github && d.github.estrelas,
+        seguidores:   d.github && d.github.seguidores,
+        desde:        d.github && d.github.desde
+      };
+      Object.keys(mapa).forEach(function (chave) {
+        var el = document.querySelector('[data-metric="' + chave + '"]');
+        if (!el) return;
+        var v = mapa[chave];
+        if (v === undefined || v === null) { el.textContent = '—'; return; }
+        escrever(el, v);
+      });
+      estado.textContent = 'em directo';
+    })
+    .catch(function () {
+      estado.textContent = 'sem ligação';
+      estado.style.color = 'var(--dim)';
+    });
+})();
+</script>
+
+</body>
+</html>
