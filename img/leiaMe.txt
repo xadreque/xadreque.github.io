@@ -1,0 +1,32 @@
+COMO COLOCAR OS SCREENSHOTS
+============================
+
+Forma fácil (recomendada):
+  1. Abra o ficheiro  admin-imagens.html  no browser (basta duplo-clique).
+  2. Arraste cada screenshot para o espaço do projecto certo.
+     Fica redimensionado para 1600x1000 e comprimido automaticamente.
+  3. Reveja (clique para ampliar) e remova o que não gostar.
+  4. Clique em "Descarregar todas".
+  5. Copie os ficheiros descarregados para esta pasta (img/).
+
+Feito. O portfólio mostra-as sozinho — não precisa de mexer no código.
+
+--------------------------------------------------------------------
+Nomes esperados (a ferramenta gera-os com estes nomes exactos):
+
+  lavamoz-1.jpg          lavamoz-2.jpg          lavamoz-3.jpg
+  maxakamoyeni-1.jpg     maxakamoyeni-2.jpg     maxakamoyeni-3.jpg
+  nhikela-1.jpg          nhikela-2.jpg          nhikela-3.jpg
+  agromoz-1.jpg          agromoz-2.jpg          agromoz-3.jpg
+  empreendedoras-1.jpg   empreendedoras-2.jpg   empreendedoras-3.jpg
+  sigec-1.jpg            sigec-2.jpg            sigec-3.jpg
+  salao-1.jpg            salao-2.jpg            salao-3.jpg
+  jeff-1.jpg             jeff-2.jpg             jeff-3.jpg
+  xnae-1.jpg             xnae-2.jpg             xnae-3.jpg
+
+Enquanto um ficheiro não existir, o portfólio mostra um marcador
+tracejado com o nome que falta — nunca fica partido.
+
+NOTA: admin-imagens.html é uma ferramenta sua, offline. Pode publicá-la
+ou não — não guarda nada nem tem segredos. Se preferir, não a inclua
+no site publicado.
