@@ -42,11 +42,13 @@
 </script>
 
 <script>
-  /* Aplica o tema guardado ANTES de pintar, para não haver flash */
+  /* Aplica o tema pela HORA do dia ANTES de pintar, para não haver flash.
+     Dia (6h-18h) = claro; Noite (18h-6h) = escuro. */
   (function () {
     try {
-      var t = localStorage.getItem('tema');
-      if (t === 'claro' || (t === null && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+      var h = new Date().getHours();
+      var ehDia = (h >= 6 && h < 18);
+      if (ehDia) {
         document.documentElement.setAttribute('data-tema', 'claro');
       }
     } catch (e) {}
@@ -1051,13 +1053,24 @@ html[data-tema="claro"] .cf-seta{color:#FFFFFF}
       var claro = document.documentElement.getAttribute('data-tema') === 'claro';
       if (claro) {
         document.documentElement.removeAttribute('data-tema');
-        try { localStorage.setItem('tema', 'escuro'); } catch (e) {}
       } else {
         document.documentElement.setAttribute('data-tema', 'claro');
-        try { localStorage.setItem('tema', 'claro'); } catch (e) {}
       }
+      // Nota: a troca é pontual. Ao recarregar, a hora do dia volta a decidir.
     });
   }
+
+  /* Reavalia o tema pela hora, para páginas deixadas abertas ao virar o dia/noite */
+  (function () {
+    function aplicarPorHora() {
+      var h = new Date().getHours();
+      var ehDia = (h >= 6 && h < 18);
+      if (ehDia) document.documentElement.setAttribute('data-tema', 'claro');
+      else document.documentElement.removeAttribute('data-tema');
+    }
+    // verifica a cada 10 minutos
+    setInterval(aplicarPorHora, 600000);
+  })();
 
   /* ═══════ FOTO DE PERFIL ═══════ */
   var foto = document.querySelector('.cp-foto img');
