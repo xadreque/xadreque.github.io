@@ -187,7 +187,7 @@ html[data-tema="claro"] .hero-bg::before{opacity:.55}
 .btn-line:hover{border-color:var(--signal);color:var(--signal);background:rgba(var(--signal-rgb),.06)}
 
 /* ═══════════════ PAINEL ═══════════════ */
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
 .panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line);background:var(--surface-hi)}
 .panel-head span{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .panel-live{display:inline-flex;align-items:center;gap:6px;color:var(--signal)!important}
@@ -210,7 +210,7 @@ html[data-tema="claro"] .hero-bg::before{opacity:.55}
 
 /* Foto + identidade */
 .cp-foto-bloco{display:flex;align-items:center;gap:16px;padding:22px 20px 20px}
-.cp-foto{position:relative;width:82px;height:82px;flex-shrink:0;border-radius:14px;overflow:hidden;border:1px solid var(--line-hi);background:var(--void)}
+.cp-foto{position:relative;width:82px;height:82px;flex-shrink:0;border-radius:16px;overflow:hidden;border:1px solid var(--line-hi);background:var(--void)}
 .cp-foto img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
 .cp-foto-vazia{position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:var(--dim);background:repeating-linear-gradient(45deg,transparent 0 9px,var(--line) 9px 18px),var(--surface-hi)}
 .cp-foto-vazia svg{width:26px;height:26px}
@@ -238,8 +238,11 @@ html[data-tema="claro"] .hero-bg::before{opacity:.55}
 /* ═══════════════ PROJECTOS ═══════════════ */
 .works{display:grid;gap:26px}
 @media(min-width:900px){.works{grid-template-columns:1fr 1fr}}
-.work{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,transform .3s var(--ease),box-shadow .3s,background .3s}
-.work:hover{border-color:rgba(var(--signal-rgb),.5);transform:translateY(-4px);background:linear-gradient(160deg,rgba(var(--signal-rgb),.10) 0%,var(--surface) 42%)}
+.work{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .4s var(--ease),transform .45s var(--ease),box-shadow .45s var(--ease),background .4s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.work::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(var(--signal-rgb),.9),transparent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);z-index:4}
+.work:hover::before{transform:scaleX(1)}
+.work:hover{border-color:rgba(var(--signal-rgb),.45);transform:translateY(-6px);background:linear-gradient(160deg,rgba(var(--signal-rgb),.09) 0%,var(--surface) 46%);box-shadow:0 18px 40px -12px rgba(var(--signal-rgb),.28),0 8px 20px -8px rgba(0,0,0,.15)}
+html[data-tema="claro"] .work:hover{box-shadow:0 18px 40px -14px rgba(var(--signal-rgb),.32),0 6px 16px -8px rgba(12,22,19,.12)}
 
 /* ── Carrossel ── */
 .shots{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--void),var(--void-deep));overflow:hidden;border-bottom:1px solid var(--line)}
@@ -247,6 +250,8 @@ html[data-tema="claro"] .hero-bg::before{opacity:.55}
 .slide{position:relative;flex:0 0 100%;height:100%;background:radial-gradient(circle at 50% 40%,var(--surface-hi),var(--void));overflow:hidden}
 .slide img{width:100%;height:100%;object-fit:contain;object-position:top center;display:block;transition:filter .5s ease}
 .work:hover .slide img{filter:brightness(1.03)}
+/* LavaMoz preenche o cartão (cover), os outros mostram completo (contain) */
+.work-fill .slide img{object-fit:cover;object-position:top center}
 .slide.empty img{display:none}
 .slide.empty::after{content:attr(data-hint);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:repeating-linear-gradient(45deg,transparent 0 11px,var(--line) 11px 22px),var(--void)}
 .shots-nav{position:absolute;top:50%;transform:translateY(-50%) scale(.85);width:36px;height:36px;border-radius:50%;border:1px solid var(--line-hi);background:rgba(var(--nav-bg),.82);backdrop-filter:blur(8px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s var(--ease),transform .3s var(--ease),background .2s,border-color .2s;z-index:3;box-shadow:0 2px 10px rgba(0,0,0,.15)}
@@ -265,19 +270,26 @@ html[data-tema="claro"] .hero-bg::before{opacity:.55}
 /* ── Corpo do projecto ── */
 .work-body{padding:24px 24px 26px;display:flex;flex-direction:column;gap:12px;flex:1}
 .work-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.work-body h3{font-family:var(--display);font-size:1.2rem;font-weight:600;letter-spacing:-.015em;line-height:1.2}
-.work-kind{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;color:var(--signal);border:1px solid rgba(var(--signal-rgb),.28);background:rgba(var(--signal-rgb),.06);padding:3px 8px;border-radius:3px;white-space:nowrap}
+.work-body h3{position:relative;font-family:var(--display);font-size:1.24rem;font-weight:600;letter-spacing:-.015em;line-height:1.2;transition:color .3s var(--ease)}
+.work:hover .work-body h3{color:var(--signal)}
+.work-kind{font-family:var(--mono);font-size:.63rem;letter-spacing:.11em;text-transform:uppercase;color:var(--signal);border:1px solid rgba(var(--signal-rgb),.28);background:rgba(var(--signal-rgb),.06);padding:4px 9px;border-radius:5px;white-space:nowrap;transition:background .3s var(--ease),border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.work:hover .work-kind{background:rgba(var(--signal-rgb),.14);border-color:rgba(var(--signal-rgb),.5);box-shadow:0 0 14px -2px rgba(var(--signal-rgb),.4)}
 .work-body p{color:var(--muted);font-size:.93rem;flex:1}
 .work-body p em{font-style:italic;color:var(--ink)}
+/* Link XNAE — moderno e animado */
+.xnae-link{position:relative;display:inline-flex;align-items:center;gap:3px;color:var(--signal);text-decoration:none;font-weight:700;letter-spacing:.01em;background:linear-gradient(90deg,var(--signal),var(--signal));background-size:0% 2px;background-position:0 100%;background-repeat:no-repeat;transition:background-size .35s var(--ease),filter .3s var(--ease)}
+.xnae-link svg{width:.72em;height:.72em;opacity:.7;transform:translate(0,0);transition:transform .35s var(--ease),opacity .3s var(--ease)}
+.xnae-link:hover{background-size:100% 2px;filter:drop-shadow(0 0 10px rgba(var(--signal-rgb),.5))}
+.xnae-link:hover svg{transform:translate(2px,-2px);opacity:1}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
 .chip{font-family:var(--mono);font-size:.66rem;letter-spacing:.03em;color:var(--dim);background:var(--void);border:1px solid var(--line);padding:3px 9px;border-radius:4px;transition:color .2s,border-color .2s}
 .work:hover .chip{color:var(--muted);border-color:var(--line-hi)}
 
 /* ═══════════════ STACK ═══════════════ */
 .layers{display:grid;gap:18px}
-.layer{display:grid;grid-template-columns:1fr;gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:30px;transition:border-color .25s,transform .25s var(--ease),background .25s}
+.layer{display:grid;grid-template-columns:1fr;gap:22px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:30px;transition:border-color .4s var(--ease),transform .4s var(--ease),background .4s,box-shadow .4s var(--ease);box-shadow:0 1px 2px rgba(0,0,0,.04)}
 @media(min-width:860px){.layer{grid-template-columns:190px 1fr 250px;align-items:start;gap:34px}}
-.layer:hover{border-color:rgba(var(--signal-rgb),.5);transform:translateX(4px);background:linear-gradient(120deg,rgba(var(--signal-rgb),.11) 0%,var(--surface-hi) 48%)}
+.layer:hover{border-color:rgba(var(--signal-rgb),.5);transform:translateX(6px);background:linear-gradient(120deg,rgba(var(--signal-rgb),.11) 0%,var(--surface-hi) 48%);box-shadow:0 12px 30px -14px rgba(var(--signal-rgb),.3)}
 .layer-id{display:flex;align-items:center;gap:12px}
 .layer-tier{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--signal);border:1px solid rgba(var(--signal-rgb),.3);background:rgba(var(--signal-rgb),.07);padding:3px 8px;border-radius:3px;white-space:nowrap}
 .layer-id h3{font-family:var(--display);font-size:1.16rem;font-weight:500;letter-spacing:-.01em}
@@ -289,7 +301,7 @@ html[data-tema="claro"] .hero-bg::before{opacity:.55}
 @media(min-width:940px){.signals{grid-template-columns:380px 1fr;align-items:start}}
 
 /* Gráfico de visitas */
-.grafico-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 26px 20px;margin-bottom:22px;position:relative;overflow:hidden}
+.grafico-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 26px 20px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
 .grafico-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--signal),transparent)}
 .grafico-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
 .grafico-label{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
@@ -338,8 +350,8 @@ html[data-tema="claro"] .hero-bg::before{opacity:.55}
 .channels{display:grid;gap:14px}
 @media(min-width:620px){.channels{grid-template-columns:1fr 1fr}}
 @media(min-width:980px){.channels{grid-template-columns:repeat(4,1fr)}}
-.channel{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:22px 20px;display:flex;flex-direction:column;gap:7px;transition:border-color .25s,background .25s,transform .25s var(--ease)}
-.channel:hover{border-color:rgba(var(--signal-rgb),.55);background:linear-gradient(145deg,rgba(var(--signal-rgb),.13) 0%,var(--surface-hi) 55%);transform:translateY(-3px)}
+.channel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 20px;display:flex;flex-direction:column;gap:7px;transition:border-color .4s var(--ease),background .4s,transform .4s var(--ease),box-shadow .4s var(--ease);box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.channel:hover{border-color:rgba(var(--signal-rgb),.5);background:linear-gradient(145deg,rgba(var(--signal-rgb),.12) 0%,var(--surface-hi) 55%);transform:translateY(-5px);box-shadow:0 14px 32px -12px rgba(var(--signal-rgb),.3),0 6px 16px -8px rgba(0,0,0,.14)}
 .channel-kind{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 .channel-val{font-family:var(--mono);font-size:.84rem;color:var(--ink);word-break:break-word;transition:color .25s}
 .channel:hover .channel-val{color:var(--signal)}
@@ -368,8 +380,8 @@ html[data-tema="claro"] .cf-seta{color:#FFFFFF}
 /* Painel de KPIs (resumo de interacção) */
 .kpi-strip{display:grid;gap:16px;margin-bottom:40px}
 @media(min-width:640px){.kpi-strip{grid-template-columns:repeat(3,1fr)}}
-.kpi{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px;position:relative;overflow:hidden;transition:border-color .3s,transform .3s var(--ease),box-shadow .3s,background .3s}
-.kpi:hover{border-color:rgba(var(--signal-rgb),.5);transform:translateY(-3px);background:linear-gradient(150deg,rgba(var(--signal-rgb),.10) 0%,var(--surface) 46%)}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 24px;position:relative;overflow:hidden;transition:border-color .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease),background .4s;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.kpi:hover{border-color:rgba(var(--signal-rgb),.5);transform:translateY(-5px);background:linear-gradient(150deg,rgba(var(--signal-rgb),.10) 0%,var(--surface) 46%);box-shadow:0 14px 32px -12px rgba(var(--signal-rgb),.3),0 6px 16px -8px rgba(0,0,0,.14)}
 .kpi::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--signal),transparent)}
 .kpi-num{display:block;font-family:var(--display);font-size:2rem;font-weight:700;letter-spacing:-.02em;color:var(--signal);line-height:1}
 /* KPI de visitas destacado */
@@ -381,11 +393,35 @@ html[data-tema="claro"] .cf-seta{color:#FFFFFF}
 .kpi-lbl b{color:var(--ink);font-weight:500}
 
 /* ═══════════════ RODAPÉ ═══════════════ */
-.foot{border-top:1px solid var(--line);padding:34px 0;background:var(--void-deep)}
-.foot-inner{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:.72rem;color:var(--dim);letter-spacing:.04em}
+.foot{border-top:1px solid var(--line);padding:0;background:linear-gradient(180deg,var(--void-deep),var(--void));position:relative;overflow:hidden}
+.foot::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(var(--signal-rgb),.6),transparent)}
+/* Chamada final */
+.foot-cta{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;padding:54px 0 44px;border-bottom:1px solid var(--line)}
+.foot-disponivel{display:inline-flex;align-items:center;gap:9px;padding:6px 14px;border-radius:100px;background:rgba(var(--signal-rgb),.1);border:1px solid rgba(var(--signal-rgb),.3);font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;color:var(--signal);margin-bottom:16px}
+.foot-disp-dot{width:8px;height:8px;border-radius:50%;background:var(--signal);animation:beacon 2.4s ease-out infinite}
+.foot-cta-txt h2{font-family:var(--display);font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:600;letter-spacing:-.02em;color:var(--ink);line-height:1.15;margin:0 0 8px}
+.foot-cta-txt p{color:var(--muted);font-size:.95rem;max-width:420px;margin:0}
+.foot-cta-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:12px;background:var(--signal);color:#fff;font-family:var(--display);font-weight:600;font-size:.98rem;white-space:nowrap;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s;box-shadow:0 8px 24px -8px rgba(var(--signal-rgb),.5)}
+.foot-cta-btn svg{width:18px;height:18px;transition:transform .35s var(--ease)}
+.foot-cta-btn:hover{transform:translateY(-3px);box-shadow:0 14px 32px -8px rgba(var(--signal-rgb),.6)}
+.foot-cta-btn:hover svg{transform:translateX(4px)}
+html[data-tema="claro"] .foot-cta-btn{color:#fff}
+/* Grelha de navegação */
+.foot-grid{display:grid;grid-template-columns:1fr;gap:32px;padding:44px 0}
+@media(min-width:680px){.foot-grid{grid-template-columns:1.6fr 1fr 1fr}}
+.foot-logo{display:block;font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--ink);letter-spacing:-.01em;margin-bottom:8px}
+.foot-brand p{color:var(--dim);font-size:.86rem;max-width:280px;margin:0}
+.foot-nav{display:flex;flex-direction:column;gap:11px}
+.foot-nav-t{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.foot-nav a{color:var(--muted);font-size:.9rem;width:fit-content;transition:color .25s var(--ease),transform .25s var(--ease)}
+.foot-nav a:hover{color:var(--signal);transform:translateX(3px)}
+/* Base */
+.foot-base{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:26px 0 34px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.72rem;color:var(--dim);letter-spacing:.04em}
+.foot-loc{display:inline-flex;align-items:center;gap:8px}
+.foot-dot{width:7px;height:7px;border-radius:50%;background:var(--signal);animation:beacon 2.4s ease-out infinite}
 
 /* ═══════════════ MOTION ═══════════════ */
-.rise{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rise{opacity:0;transform:translateY(26px) scale(.985);transition:opacity .75s var(--ease),transform .75s var(--ease)}
 .rise.seen{opacity:1;transform:none}
 .rise.d1{transition-delay:.07s}.rise.d2{transition-delay:.14s}
 .rise.d3{transition-delay:.21s}.rise.d4{transition-delay:.28s}
@@ -516,7 +552,7 @@ html[data-tema="claro"] .cf-seta{color:#FFFFFF}
     <div class="works">
 
       <!-- ── LavaMoz ── -->
-      <article class="work rise">
+      <article class="work rise work-fill">
         <div class="shots" data-shots>
           <div class="shots-track">
             <figure class="slide" data-hint="lavamoz-1.jpg"><img src="img/lavamoz-1.jpg" alt="LavaMoz — ecrã principal"></figure>
@@ -554,15 +590,12 @@ html[data-tema="claro"] .cf-seta{color:#FFFFFF}
             <span class="work-kind">Fintech</span>
           </div>
           <p>
-            Sistema concebido para resolver problemas reais do povo, a começar pela
-            digitalização do <em>xitique</em> — a poupança rotativa que movimenta dinheiro
-            fora do sistema bancário. Gere ciclos, ordem de recebimento, contribuições e
-            histórico de cada membro. Tem uma <em>comunidade</em> que aproxima os membros
-            da mesma família e um <em>amigo oculto</em> online, moderno e profissional, além
-            dos <em>jogos tradicionais</em> integrados — uma relíquia da cultura moçambicana,
-            sobretudo para o povo da zona sul. Inclui ainda uma <em>vertente comercial</em>
-            para grandes comerciantes que queiram unir-se, apoiada nas novas tendências
-            tecnológicas.
+            Sistema para resolver problemas reais do povo e dos comerciantes. Digitaliza o
+            <em>xitique</em> — a poupança rotativa fora do sistema bancário — gerindo ciclos,
+            contribuições e histórico. Junta uma <em>comunidade</em> familiar com
+            <em>amigo oculto</em> online e vários <em>jogos tradicionais</em> (Txuva, Mudjobu
+            e mais), relíquia da cultura moçambicana da zona sul. Tem ainda uma
+            <em>vertente comercial</em> para grandes comerciantes.
           </p>
         </div>
       </article>
@@ -716,7 +749,7 @@ html[data-tema="claro"] .cf-seta{color:#FFFFFF}
         </div>
         <div class="work-body">
           <div class="work-top">
-            <h3>Website XNAE</h3>
+            <h3>Website <a href="https://xnae.co.mz" target="_blank" rel="noopener" class="xnae-link">XNAE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a></h3>
             <span class="work-kind">Marca própria</span>
           </div>
           <p>
@@ -843,7 +876,7 @@ html[data-tema="claro"] .cf-seta{color:#FFFFFF}
     <div class="route">
       <article class="node live rise">
         <span class="node-kind">Actuação de mercado</span>
-        <h3>Fundador da XNAE</h3>
+        <h3>Fundador da <a href="https://xnae.co.mz" target="_blank" rel="noopener" class="xnae-link">XNAE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a></h3>
         <p class="node-org">Moçambique · em curso</p>
         <p>Fundei a XNAE, empresa de consultoria técnica em engenharia informática, sob a qual
            desenvolvo plataformas comerciais e institucionais para o mercado nacional e presto
@@ -1000,9 +1033,44 @@ html[data-tema="claro"] .cf-seta{color:#FFFFFF}
 
 <!-- ══════════ RODAPÉ ══════════ -->
 <footer class="foot">
-  <div class="wrap foot-inner">
-    <span>© <span id="ano"></span> Xadreque Alfeu Zandamela</span>
-    <span>Moçambique</span>
+  <div class="wrap">
+    <div class="foot-cta">
+      <div class="foot-cta-txt">
+        <span class="foot-disponivel"><span class="foot-disp-dot"></span>Aberto a projectos e parcerias</span>
+        <h2>Vamos construir algo que dure</h2>
+        <p>Plataformas, redes e sistemas em produção para instituições e negócios — disponível para novos desafios.</p>
+      </div>
+      <a href="https://cal.com/xadreque-zandamela-gsfu33" target="_blank" rel="noopener" class="foot-cta-btn">
+        <span>Agendar conversa</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="foot-logo">Xadreque Zandamela</span>
+        <p>Engenharia informática e redes. Sistemas em produção para instituições e comércio em Moçambique.</p>
+      </div>
+      <nav class="foot-nav">
+        <span class="foot-nav-t">Navegação</span>
+        <a href="#trabalho">Trabalhos</a>
+        <a href="#stack">Stack</a>
+        <a href="#sinais">Sinais</a>
+        <a href="#canais">Canais</a>
+      </nav>
+      <nav class="foot-nav">
+        <span class="foot-nav-t">Contacto</span>
+        <a href="cv-xadreque-zandamela.pdf" target="_blank" rel="noopener">Currículo (CV)</a>
+        <a href="mailto:tecnicozanda@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/xadreque-alfeu-zandamela-9a199a162" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/xadreque" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+
+    <div class="foot-base">
+      <span>© <span id="ano"></span> Xadreque Alfeu Zandamela</span>
+      <span class="foot-loc"><span class="foot-dot"></span>Moçambique · disponível remotamente</span>
+    </div>
   </div>
 </footer>
 
@@ -1484,20 +1552,23 @@ window.I18N = {
 
   "Sistema concebido para resolver problemas reais do povo, a começar pela\n            digitalização do": "System designed to solve real problems of the people, starting with digitising the",
   "xitique": "xitique",
-  "— a poupança rotativa que movimenta dinheiro\n            fora do sistema bancário. Gere ciclos, ordem de recebimento, contribuições e\n            histórico de cada membro. Tem uma":
-    "— the rotating savings scheme that moves money\n            outside the banking system. It manages cycles, payout order, contributions and\n            each member's history. It has a",
+  "Sistema para resolver problemas reais do povo e dos comerciantes. Digitaliza o":
+    "A system to solve real problems of the people and merchants. It digitises the",
+  "xitique": "xitique",
+  "— a poupança rotativa fora do sistema bancário — gerindo ciclos,\n            contribuições e histórico. Junta uma":
+    "— the rotating savings scheme outside the banking system — managing cycles,\n            contributions and history. It brings together a",
   "comunidade": "community",
-  "que aproxima os membros\n            da mesma família e um":
-    "that brings together members\n            of the same family and an",
+  "familiar com":
+    "family",
   "amigo oculto": "Secret Santa",
-  "online, moderno e profissional, além\n            dos":
-    "feature, modern and professional, alongside\n            the",
+  "online e vários":
+    "online and several",
   "jogos tradicionais": "traditional games",
-  "integrados — uma relíquia da cultura moçambicana,\n            sobretudo para o povo da zona sul. Inclui ainda uma":
-    "built in — a treasure of Mozambican culture,\n            especially for the people of the southern region. It also includes a",
+  "(Txuva, Mudjobu\n            e mais), relíquia da cultura moçambicana da zona sul. Tem ainda uma":
+    "(Txuva, Mudjobu\n            and more), a treasure of southern Mozambican culture. It also has a",
   "vertente comercial": "commercial side",
-  "para grandes comerciantes que queiram unir-se, apoiada nas novas tendências\n            tecnológicas.":
-    "for large merchants who wish to join forces, powered by the latest\n            technological trends.",
+  "para grandes comerciantes.":
+    "for large merchants.",
 
   "Comércio B2B": "B2B Commerce",
   "Plataforma multi-instituição de fornecimento de material informático e de escritório.\n            Cada instituição configura marca, catálogo e dados fiscais pelas próprias definições —\n            nada está fixo em ficheiros. Inclui stock com alerta de ruptura, facturação,\n            pagamentos M-Pesa e e-Mola, e interface bilingue.":
@@ -1570,6 +1641,8 @@ window.I18N = {
   "Actuação de mercado": "Market activity",
   "Desenvolvimento e infraestrutura": "Development & infrastructure",
   "Fundador da XNAE": "Founder of XNAE",
+  "Fundador da": "Founder of",
+  "Website": "Website",
   "Moçambique · em curso": "Mozambique · ongoing",
   "Fundei a XNAE, empresa de consultoria técnica em engenharia informática, sob a qual\n           desenvolvo plataformas comerciais e institucionais para o mercado nacional e presto\n           serviços de redes, bases de dados e sistemas — do primeiro contacto com o cliente\n           à entrega final.":
     "I founded XNAE, a technical consulting firm in computer engineering, under which\n           I develop commercial and institutional platforms for the national market and provide\n           network, database and systems services — from the first client contact\n           to final delivery.",
@@ -1604,6 +1677,19 @@ window.I18N = {
   "WhatsApp": "WhatsApp",
   "Telefone": "Phone",
   "Agendar chamada": "Book a call",
+  "Aberto a projectos e parcerias": "Open to projects and partnerships",
+  "Vamos construir algo que dure": "Let's build something that lasts",
+  "Plataformas, redes e sistemas em produção para instituições e negócios — disponível para novos desafios.": "Production platforms, networks and systems for institutions and businesses — available for new challenges.",
+  "Agendar conversa": "Book a call",
+  "Engenharia informática e redes. Sistemas em produção para instituições e comércio em Moçambique.": "Computer engineering and networks. Production systems for institutions and commerce in Mozambique.",
+  "Navegação": "Navigation",
+  "Trabalhos": "Work",
+  "Stack": "Stack",
+  "Sinais": "Signals",
+  "Canais": "Channels",
+  "Contacto": "Contact",
+  "Currículo (CV)": "Résumé (CV)",
+  "Moçambique · disponível remotamente": "Mozambique · available remotely",
   "Marcar 30 min comigo": "Book 30 min with me",
   "Escolha um horário · cal.com": "Pick a time · cal.com",
   "30 min · cal.com": "30 min · cal.com",
