@@ -248,10 +248,8 @@ html[data-tema="claro"] .work:hover{box-shadow:0 18px 40px -14px rgba(var(--sign
 .shots{position:relative;aspect-ratio:16/9;background:linear-gradient(135deg,var(--void),var(--void-deep));overflow:hidden;border-bottom:1px solid var(--line)}
 .shots-track{display:flex;height:100%;transition:transform .6s var(--ease)}
 .slide{position:relative;flex:0 0 100%;height:100%;background:radial-gradient(circle at 50% 40%,var(--surface-hi),var(--void));overflow:hidden}
-.slide img{width:100%;height:100%;object-fit:contain;object-position:top center;display:block;transition:filter .5s ease}
+.slide img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:filter .5s ease}
 .work:hover .slide img{filter:brightness(1.03)}
-/* LavaMoz preenche o cartão (cover), os outros mostram completo (contain) */
-.work-fill .slide img{object-fit:cover;object-position:top center}
 .slide.empty img{display:none}
 .slide.empty::after{content:attr(data-hint);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);background:repeating-linear-gradient(45deg,transparent 0 11px,var(--line) 11px 22px),var(--void)}
 .shots-nav{position:absolute;top:50%;transform:translateY(-50%) scale(.85);width:36px;height:36px;border-radius:50%;border:1px solid var(--line-hi);background:rgba(var(--nav-bg),.82);backdrop-filter:blur(8px);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s var(--ease),transform .3s var(--ease),background .2s,border-color .2s;z-index:3;box-shadow:0 2px 10px rgba(0,0,0,.15)}
@@ -552,7 +550,7 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
     <div class="works">
 
       <!-- ── LavaMoz ── -->
-      <article class="work rise work-fill">
+      <article class="work rise">
         <div class="shots" data-shots>
           <div class="shots-track">
             <figure class="slide" data-hint="lavamoz-1.jpg"><img src="img/lavamoz-1.jpg" alt="LavaMoz — ecrã principal"></figure>
