@@ -301,7 +301,7 @@ html[data-tema="claro"] .work:hover{box-shadow:0 18px 40px -14px rgba(var(--sign
 /* Gráfico de visitas */
 .grafico-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px 26px 20px;margin-bottom:22px;position:relative;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
 .grafico-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--signal),transparent)}
-.grafico-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap}
+.grafico-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
 .grafico-label{display:block;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
 .grafico-total{display:block;margin-top:8px;font-family:var(--body);font-size:.92rem;color:var(--muted)}
 .grafico-total b{font-family:var(--display);font-size:1.7rem;font-weight:700;color:var(--signal);letter-spacing:-.02em}
@@ -408,6 +408,12 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
 .foot-grid{display:grid;grid-template-columns:1fr;gap:32px;padding:44px 0}
 @media(min-width:680px){.foot-grid{grid-template-columns:1.6fr 1fr 1fr}}
 .foot-logo{display:block;font-family:var(--display);font-size:1.15rem;font-weight:600;color:var(--ink);letter-spacing:-.01em;margin-bottom:8px}
+.foot-brand-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.foot-symbol{flex-shrink:0;width:44px;height:44px;border-radius:11px;background:rgba(var(--signal-rgb),.08);border:1px solid rgba(var(--signal-rgb),.22);display:flex;align-items:center;justify-content:center;transition:border-color .3s var(--ease),background .3s,transform .4s var(--ease)}
+.foot-symbol svg{width:26px;height:26px}
+.foot-brand:hover .foot-symbol{border-color:rgba(var(--signal-rgb),.5);background:rgba(var(--signal-rgb),.14);transform:rotate(90deg)}
+.foot-brand-top .foot-logo{margin-bottom:2px}
+.foot-role{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.02em;color:var(--signal)}
 .foot-brand p{color:var(--dim);font-size:.86rem;max-width:280px;margin:0}
 .foot-nav{display:flex;flex-direction:column;gap:11px}
 .foot-nav-t{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
@@ -585,15 +591,17 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
         <div class="work-body">
           <div class="work-top">
             <h3>MaxakaMoyeni</h3>
-            <span class="work-kind">Fintech</span>
+            <span class="work-kind">Unidade</span>
           </div>
           <p>
-            Sistema para resolver problemas reais do povo e dos comerciantes. Digitaliza o
-            <em>xitique</em> — a poupança rotativa fora do sistema bancário — gerindo ciclos,
-            contribuições e histórico. Junta uma <em>comunidade</em> familiar com
-            <em>amigo oculto</em> online e vários <em>jogos tradicionais</em> (Txuva, Mudjobu
-            e mais), relíquia da cultura moçambicana da zona sul. Tem ainda uma
-            <em>vertente comercial</em> para grandes comerciantes.
+            Sistema que digitaliza a poupança e aproxima pessoas, pensando na abrangência de
+            todos: construído de forma híbrida (do mais baixo ao mais alto nível), com destaque
+            para a integração com <em>KaiOS</em> (para telefones básicos e com acesso a internet),
+            chegando à maioria dos moçambicanos. No centro está o <em>xitique</em> — a poupança
+            rotativa fora do sistema bancário — com gestão de ciclos, contribuições e histórico.
+            Junta uma <em>comunidade</em> familiar com <em>amigo oculto</em> online e vários
+            <em>jogos tradicionais</em> (Txuva, Mudjobu e mais), relíquia da cultura moçambicana
+            da zona sul. Tem ainda uma <em>vertente comercial</em> para grandes comerciantes.
           </p>
         </div>
       </article>
@@ -644,25 +652,27 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
         </div>
       </article>
 
-      <!-- ── Gestão de Empreendedoras ── -->
+      <!-- ── Gestão de Empreendedores ── -->
       <article class="work rise d1">
         <div class="shots" data-shots>
           <div class="shots-track">
-            <figure class="slide" data-hint="empreendedoras-1.jpg"><img src="img/empreendedoras-1.jpg" alt="Portal da empreendedora — dashboard"></figure>
+            <figure class="slide" data-hint="empreendedoras-1.jpg"><img src="img/empreendedoras-1.jpg" alt="Portal do empreendedor — dashboard"></figure>
             <figure class="slide" data-hint="empreendedoras-2.jpg"><img src="img/empreendedoras-2.jpg" alt="Gestão de negócios e movimentos"></figure>
             <figure class="slide" data-hint="empreendedoras-3.jpg"><img src="img/empreendedoras-3.jpg" alt="Relatórios por província"></figure>
           </div>
         </div>
         <div class="work-body">
           <div class="work-top">
-            <h3>Gestão de Empreendedoras</h3>
+            <h3>Gestão de Empreendedores</h3>
             <span class="work-kind">Programa nacional</span>
           </div>
           <p>
-            Plataforma de acompanhamento com portal próprio para a empreendedora e administração
-            descentralizada por província. O núcleo é o isolamento de dados: cada administrador
-            provincial vê apenas a sua província, e só o super-administrador atravessa fronteiras.
-            Integra câmbios do Banco de Moçambique, inflação do INE e meteorologia por região.
+            Plataforma de acompanhamento com portal próprio para cada empreendedor e administração
+            descentralizada por província. Inclui uma <em>pasta digital</em> onde cada empreendedor
+            guarda e acede aos seus documentos em tempo real (licenças, documentos pessoais e do
+            negócio), e uma <em>comunidade</em> para partilharem ideias e experiências. Garante
+            isolamento de dados por província e integra câmbios do Banco de Moçambique, inflação
+            do INE e meteorologia por região.
           </p>
         </div>
       </article>
@@ -679,7 +689,7 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
         <div class="work-body">
           <div class="work-top">
             <h3>SIGEC</h3>
-            <span class="work-kind">Facturação</span>
+            <span class="work-kind">Facturação Online</span>
           </div>
           <p>
             Sistema de facturação web com um painel de KPIs em linha com as tendências
@@ -713,18 +723,18 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
         </div>
       </article>
 
-      <!-- ── Website Jeff ── -->
+      <!-- ── Jeff ── -->
       <article class="work rise d1">
         <div class="shots" data-shots>
           <div class="shots-track">
-            <figure class="slide" data-hint="jeff-1.jpg"><img src="img/jeff-1.jpg" alt="Website Jeff — página inicial"></figure>
-            <figure class="slide" data-hint="jeff-2.jpg"><img src="img/jeff-2.jpg" alt="Website Jeff — secção interna"></figure>
-            <figure class="slide" data-hint="jeff-3.jpg"><img src="img/jeff-3.jpg" alt="Website Jeff — versão móvel"></figure>
+            <figure class="slide" data-hint="jeff-1.jpg"><img src="img/jeff-1.jpg" alt="Jeff — página inicial"></figure>
+            <figure class="slide" data-hint="jeff-2.jpg"><img src="img/jeff-2.jpg" alt="Jeff — secção interna"></figure>
+            <figure class="slide" data-hint="jeff-3.jpg"><img src="img/jeff-3.jpg" alt="Jeff — versão móvel"></figure>
           </div>
         </div>
         <div class="work-body">
           <div class="work-top">
-            <h3>Website Jeff</h3>
+            <h3>Jeff</h3>
             <span class="work-kind">Web institucional</span>
           </div>
           <p>
@@ -736,25 +746,26 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
         </div>
       </article>
 
-      <!-- ── Website XNAE ── -->
+      <!-- ── XNAE ── -->
       <article class="work rise d2">
         <div class="shots" data-shots>
           <div class="shots-track">
-            <figure class="slide" data-hint="xnae-1.jpg"><img src="img/xnae-1.jpg" alt="Website XNAE — página inicial"></figure>
-            <figure class="slide" data-hint="xnae-2.jpg"><img src="img/xnae-2.jpg" alt="Website XNAE — serviços"></figure>
-            <figure class="slide" data-hint="xnae-3.jpg"><img src="img/xnae-3.jpg" alt="Website XNAE — contacto"></figure>
+            <figure class="slide" data-hint="xnae-1.jpg"><img src="img/xnae-1.jpg" alt="XNAE — página inicial"></figure>
+            <figure class="slide" data-hint="xnae-2.jpg"><img src="img/xnae-2.jpg" alt="XNAE — serviços"></figure>
+            <figure class="slide" data-hint="xnae-3.jpg"><img src="img/xnae-3.jpg" alt="XNAE — contacto"></figure>
           </div>
         </div>
         <div class="work-body">
           <div class="work-top">
-            <h3>Website <a href="https://xnae.co.mz" target="_blank" rel="noopener" class="xnae-link">XNAE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a></h3>
+            <h3><a href="https://xnae.co.mz" target="_blank" rel="noopener" class="xnae-link">XNAE<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8"/></svg></a></h3>
             <span class="work-kind">Marca própria</span>
           </div>
           <p>
-            Site da XNAE, a marca sob a qual presto consultoria técnica em engenharia
-            informática. Apresenta os serviços — redes, bases de dados e desenvolvimento
-            de sistemas — o processo de trabalho e os projectos concluídos, funcionando
-            como porta de entrada comercial para novos clientes.
+            Site oficial da <em>XNAE</em> — Consultoria Técnica em Engenharia Informática.
+            Apresenta os serviços da marca: <em>redes</em> (Cisco), <em>bases de dados</em>
+            (Oracle PL/SQL), <em>segurança</em> lógica e física, e desenvolvimento de sistemas.
+            Mostra o processo de trabalho e os projectos concluídos, funcionando como porta
+            de entrada comercial para novos clientes.
           </p>
         </div>
       </article>
@@ -785,7 +796,7 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
       </article>
 
       <article class="layer rise d1">
-        <div class="layer-id"><span class="layer-tier">Camada 2</span><h3>Dados</h3></div>
+        <div class="layer-id"><span class="layer-tier">Camada 2</span><h3>Base de Dados</h3></div>
         <p>Modelação relacional e lógica de negócio dentro da própria base de dados,
            com PL/SQL para procedimentos, gatilhos e rotinas de integridade.</p>
         <div class="chips">
@@ -795,7 +806,7 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
       </article>
 
       <article class="layer rise d2">
-        <div class="layer-id"><span class="layer-tier">Camada 3</span><h3>Aplicação</h3></div>
+        <div class="layer-id"><span class="layer-tier">Camada 3</span><h3>Aplicação Web/Mobile</h3></div>
         <p>Aplicações web completas, do modelo de dados à interface, com APIs REST
            e código pensado para durar mais do que a primeira entrega.</p>
         <div class="chips">
@@ -820,10 +831,7 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
     <!-- Gráfico de visitas — últimos 14 dias -->
     <div class="grafico-card rise">
       <div class="grafico-head">
-        <div>
-          <span class="grafico-label">Visitas · últimos 14 dias</span>
-          <span class="grafico-total"><b data-metric="visitas">—</b> no total</span>
-        </div>
+        <span class="grafico-label">Visitas · últimos 14 dias</span>
         <span class="grafico-pico" id="grafico-pico"></span>
       </div>
       <div class="grafico-corpo" id="grafico" aria-label="Gráfico de visitas dos últimos 14 dias"></div>
@@ -1046,7 +1054,23 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
 
     <div class="foot-grid">
       <div class="foot-brand">
-        <span class="foot-logo">Xadreque Zandamela</span>
+        <div class="foot-brand-top">
+          <span class="foot-symbol" aria-hidden="true">
+            <svg viewBox="0 0 200 200" fill="none">
+              <line x1="60" y1="60" x2="140" y2="140" stroke="var(--signal)" stroke-width="12" stroke-linecap="round"/>
+              <line x1="140" y1="60" x2="60" y2="140" stroke="var(--signal)" stroke-width="12" stroke-linecap="round"/>
+              <circle cx="100" cy="100" r="16" fill="var(--void)" stroke="var(--signal)" stroke-width="8"/>
+              <circle cx="60" cy="60" r="11" fill="var(--signal)"/>
+              <circle cx="140" cy="60" r="11" fill="var(--signal)"/>
+              <circle cx="60" cy="140" r="11" fill="var(--signal)"/>
+              <circle cx="140" cy="140" r="11" fill="var(--signal)"/>
+            </svg>
+          </span>
+          <div>
+            <span class="foot-logo">Xadreque Zandamela</span>
+            <span class="foot-role">Consultor Técnico Informático · Fundador da XNAE</span>
+          </div>
+        </div>
         <p>Engenharia informática e redes. Sistemas em produção para instituições e comércio em Moçambique.</p>
       </div>
       <nav class="foot-nav">
@@ -1299,11 +1323,11 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
     var alvo = document.getElementById('grafico');
     if (!alvo) return;
     if (!Array.isArray(serie) || serie.length === 0) {
-      alvo.innerHTML = '<svg viewBox="0 0 600 160"><text x="300" y="85" text-anchor="middle" class="g-vazio">Sem dados ainda — as visitas aparecem aqui à medida que chegam.</text></svg>';
+      alvo.innerHTML = '<svg viewBox="0 0 600 210"><text x="300" y="110" text-anchor="middle" class="g-vazio">Sem dados ainda — as visitas aparecem aqui à medida que chegam.</text></svg>';
       return;
     }
 
-    var W = 600, H = 170, padL = 26, padR = 12, padT = 14, padB = 26;
+    var W = 600, H = 210, padL = 26, padR = 12, padT = 16, padB = 28;
     var innerW = W - padL - padR, innerH = H - padT - padB;
     var n = serie.length;
     var max = Math.max(1, Math.max.apply(null, serie.map(function (p) { return p.visitas; })));
@@ -1548,13 +1572,14 @@ window.I18N = {
   "Plataforma de gestão de serviços com três dashboards distintos: o do\n            atendente para gerir o balcão, o do cliente para acompanhar\n            o progresso dos seus pedidos em tempo real, e o de administração para\n            supervisão do negócio. A autenticação do cliente é feita de forma profissional\n            e moderna, com uma experiência de acesso cuidada.":
     "Service management platform with three distinct dashboards: the attendant's\n            to manage the counter, the client's to track the progress of their requests\n            in real time, and the administration one for business oversight. Client\n            authentication is handled in a professional and modern way, with a carefully\n            crafted sign-in experience.",
 
-  "Sistema concebido para resolver problemas reais do povo, a começar pela\n            digitalização do": "System designed to solve real problems of the people, starting with digitising the",
   "xitique": "xitique",
-  "Sistema para resolver problemas reais do povo e dos comerciantes. Digitaliza o":
-    "A system to solve real problems of the people and merchants. It digitises the",
-  "xitique": "xitique",
-  "— a poupança rotativa fora do sistema bancário — gerindo ciclos,\n            contribuições e histórico. Junta uma":
-    "— the rotating savings scheme outside the banking system — managing cycles,\n            contributions and history. It brings together a",
+  "Sistema que digitaliza a poupança e aproxima pessoas, pensando na abrangência de\n            todos: construído de forma híbrida (do mais baixo ao mais alto nível), com destaque\n            para a integração com":
+    "A system that digitises savings and brings people together, designed for the\n            inclusion of all: built in a hybrid way (from the lowest to the highest level),\n            highlighting the integration with",
+  "KaiOS": "KaiOS",
+  "(para telefones básicos e com acesso a internet),\n            chegando à maioria dos moçambicanos. No centro está o":
+    "(for basic phones and internet-enabled phones),\n            reaching most Mozambicans. At its core is the",
+  "— a poupança\n            rotativa fora do sistema bancário — com gestão de ciclos, contribuições e histórico.\n            Junta uma":
+    "— the rotating\n            savings scheme outside the banking system — with management of cycles, contributions\n            and history. It brings together a",
   "comunidade": "community",
   "familiar com":
     "family",
@@ -1562,13 +1587,14 @@ window.I18N = {
   "online e vários":
     "online and several",
   "jogos tradicionais": "traditional games",
-  "(Txuva, Mudjobu\n            e mais), relíquia da cultura moçambicana da zona sul. Tem ainda uma":
-    "(Txuva, Mudjobu\n            and more), a treasure of southern Mozambican culture. It also has a",
+  "(Txuva, Mudjobu e mais), relíquia da cultura moçambicana\n            da zona sul. Tem ainda uma":
+    "(Txuva, Mudjobu and more), a treasure of southern Mozambican culture\n            of the southern zone. It also has a",
   "vertente comercial": "commercial side",
   "para grandes comerciantes.":
     "for large merchants.",
 
   "Comércio B2B": "B2B Commerce",
+  "Unidade": "Unity",
   "Plataforma multi-instituição de fornecimento de material informático e de escritório.\n            Cada instituição configura marca, catálogo e dados fiscais pelas próprias definições —\n            nada está fixo em ficheiros. Inclui stock com alerta de ruptura, facturação,\n            pagamentos M-Pesa e e-Mola, e interface bilingue.":
     "Multi-tenant platform for supplying IT and office equipment.\n            Each institution sets its own brand, catalogue and tax details through its own settings —\n            nothing is hard-coded. Includes stock with low-stock alerts, invoicing,\n            M-Pesa and e-Mola payments, and a bilingual interface.",
 
@@ -1576,12 +1602,15 @@ window.I18N = {
   "Sistema de informação agronómica com 73 culturas em 9 categorias, cada uma com\n            ficha técnica completa. A decisão de arquitectura que o define: uma camada para\n            KaiOS, para chegar aos telefones básicos onde está a maioria dos agricultores\n            moçambicanos — e não ao smartphone que eles não têm.":
     "Agronomic information system with 73 crops across 9 categories, each with\n            a full technical sheet. The defining architectural choice: a KaiOS layer,\n            to reach the basic phones where most Mozambican farmers actually are —\n            not the smartphone they don't have.",
 
-  "Gestão de Empreendedoras": "Women Entrepreneurs Management",
+  "Gestão de Empreendedores": "Entrepreneurs Management",
   "Programa nacional": "National programme",
-  "Plataforma de acompanhamento com portal próprio para a empreendedora e administração\n            descentralizada por província. O núcleo é o isolamento de dados: cada administrador\n            provincial vê apenas a sua província, e só o super-administrador atravessa fronteiras.\n            Integra câmbios do Banco de Moçambique, inflação do INE e meteorologia por região.":
-    "Tracking platform with its own portal for each entrepreneur and administration\n            decentralised by province. At its core is data isolation: each provincial admin\n            sees only their province, and only the super-admin crosses boundaries.\n            It integrates Bank of Mozambique exchange rates, INE inflation and regional weather.",
+  "Plataforma de acompanhamento com portal próprio para cada empreendedor e administração\n            descentralizada por província. Inclui uma": "Monitoring platform with a dedicated portal for each entrepreneur and\n            province-decentralised administration. It includes a",
+  "pasta digital": "digital folder",
+  "onde cada empreendedor\n            guarda e acede aos seus documentos em tempo real (licenças, documentos pessoais e do\n            negócio), e uma": "where each entrepreneur\n            stores and accesses their documents in real time (licences, personal and business\n            documents), and a",
+  "comunidade": "community",
+  "para partilharem ideias e experiências. Garante\n            isolamento de dados por província e integra câmbios do Banco de Moçambique, inflação\n            do INE e meteorologia por região.": "to share ideas and experiences. It ensures\n            data isolation per province and integrates exchange rates from the Bank of Mozambique,\n            INE inflation data and regional weather.",
 
-  "Facturação": "Invoicing",
+  "Facturação Online": "Online Invoicing",
   "Sistema de facturação web com um painel de KPIs em linha com as tendências\n            modernas de gestão — indicadores de vendas, cobrança e desempenho apresentados\n            de forma clara e accionável. Integra com o Microsoft Power BI, levando os dados\n            de facturação para relatórios analíticos e dashboards de decisão.":
     "Web invoicing system with a KPI dashboard aligned with modern\n            management trends — sales, collection and performance indicators presented\n            clearly and ready to act on. It integrates with Microsoft Power BI, taking\n            invoicing data into analytical reports and decision dashboards.",
 
@@ -1594,8 +1623,14 @@ window.I18N = {
     "Corporate website for an accounting consultancy, designed and\n            built from scratch. It presents the firm's services and credibility with\n            a clear structure, fast reading on slow connections and performance treated\n            as a requirement from the start.",
 
   "Marca própria": "Own brand",
-  "Site da XNAE, a marca sob a qual presto consultoria técnica em engenharia\n            informática. Apresenta os serviços — redes, bases de dados e desenvolvimento\n            de sistemas — o processo de trabalho e os projectos concluídos, funcionando\n            como porta de entrada comercial para novos clientes.":
-    "Website for XNAE, the brand under which I provide technical consulting in\n            computer engineering. It presents the services — networks, databases and systems\n            development — the way I work and completed projects, serving as\n            the commercial entry point for new clients.",
+  "Site oficial da": "Official website of",
+  "— Consultoria Técnica em Engenharia Informática.\n            Apresenta os serviços da marca:": "— Technical Consulting in Computer Engineering.\n            It presents the brand's services:",
+  "redes": "networks",
+  "(Cisco),": "(Cisco),",
+  "bases de dados": "databases",
+  "(Oracle PL/SQL),": "(Oracle PL/SQL),",
+  "segurança": "security",
+  "lógica e física, e desenvolvimento de sistemas.\n            Mostra o processo de trabalho e os projectos concluídos, funcionando como porta\n            de entrada comercial para novos clientes.": "logical and physical, and systems development.\n            It shows the way I work and completed projects, serving as a commercial\n            entry point for new clients.",
 
   // Stack
   "Stack técnica": "Technical stack",
@@ -1608,12 +1643,12 @@ window.I18N = {
     "Design, deployment and monitoring of corporate networks. Segmentation,\n           routing and troubleshooting on Cisco architectures.",
   "Segmentação": "Segmentation",
   "Camada 2": "Layer 2",
-  "Dados": "Data",
+  "Base de Dados": "Database",
   "Modelação relacional e lógica de negócio dentro da própria base de dados,\n           com PL/SQL para procedimentos, gatilhos e rotinas de integridade.":
     "Relational modelling and business logic inside the database itself,\n           with PL/SQL for procedures, triggers and integrity routines.",
   "Modelação": "Modelling",
   "Camada 3": "Layer 3",
-  "Aplicação": "Application",
+  "Aplicação Web/Mobile": "Web/Mobile Application",
   "Aplicações web completas, do modelo de dados à interface, com APIs REST\n           e código pensado para durar mais do que a primeira entrega.":
     "Full web applications, from data model to interface, with REST APIs\n           and code built to last beyond the first release.",
 
@@ -1622,7 +1657,6 @@ window.I18N = {
   "Tráfego deste site e actividade no repositório, lidos das APIs no momento\n         em que abriu a página.":
     "This site's traffic and repository activity, read from the APIs the moment\n         you opened the page.",
   "Visitas · últimos 14 dias": "Visits · last 14 days",
-  "no total": "in total",
   "Leitura": "Reading",
   "a ligar": "connecting",
   "Visitas totais": "Total visits",
