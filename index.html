@@ -417,8 +417,14 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
 .foot-brand p{color:var(--dim);font-size:.86rem;max-width:280px;margin:0}
 .foot-nav{display:flex;flex-direction:column;gap:11px}
 .foot-nav-t{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
-.foot-nav a{color:var(--muted);font-size:.9rem;width:fit-content;transition:color .25s var(--ease),transform .25s var(--ease)}
+.foot-nav a{display:inline-flex;align-items:center;gap:9px;color:var(--muted);font-size:.9rem;width:fit-content;transition:color .25s var(--ease),transform .25s var(--ease)}
 .foot-nav a:hover{color:var(--signal);transform:translateX(3px)}
+/* ícone de contacto (documento, email, linkedin, github) */
+.fn-ic{width:16px;height:16px;flex-shrink:0;color:var(--dim);transition:color .3s var(--ease),transform .35s var(--ease)}
+.foot-nav a:hover .fn-ic{color:var(--signal);transform:scale(1.15)}
+/* seta da navegação — escondida, desliza ao passar */
+.fn-arrow{width:15px;height:15px;flex-shrink:0;color:var(--signal);opacity:0;margin-left:-24px;transition:opacity .3s var(--ease),margin-left .3s var(--ease)}
+.foot-nav a:hover .fn-arrow{opacity:1;margin-left:0}
 /* Base */
 .foot-base{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;padding:26px 0 34px;border-top:1px solid var(--line);font-family:var(--mono);font-size:.72rem;color:var(--dim);letter-spacing:.04em}
 .foot-loc{display:inline-flex;align-items:center;gap:8px}
@@ -1075,17 +1081,17 @@ html[data-tema="claro"] .foot-cta-btn{color:#fff}
       </div>
       <nav class="foot-nav">
         <span class="foot-nav-t">Navegação</span>
-        <a href="#trabalho">Trabalhos</a>
-        <a href="#stack">Stack</a>
-        <a href="#sinais">Sinais</a>
-        <a href="#canais">Canais</a>
+        <a href="#trabalho"><svg class="fn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Trabalhos</a>
+        <a href="#stack"><svg class="fn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Stack</a>
+        <a href="#sinais"><svg class="fn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Sinais</a>
+        <a href="#canais"><svg class="fn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>Canais</a>
       </nav>
       <nav class="foot-nav">
         <span class="foot-nav-t">Contacto</span>
-        <a href="cv-xadreque-zandamela.pdf" target="_blank" rel="noopener">Currículo (CV)</a>
-        <a href="mailto:tecnicozanda@gmail.com">Email</a>
-        <a href="https://linkedin.com/in/xadreque-alfeu-zandamela-9a199a162" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/xadreque" target="_blank" rel="noopener">GitHub</a>
+        <a href="cv-xadreque-zandamela.pdf" target="_blank" rel="noopener"><svg class="fn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>Currículo (CV)</a>
+        <a href="mailto:tecnicozanda@gmail.com"><svg class="fn-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a>
+        <a href="https://linkedin.com/in/xadreque-alfeu-zandamela-9a199a162" target="_blank" rel="noopener"><svg class="fn-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.22.79 24 1.77 24h20.45c.98 0 1.78-.78 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>LinkedIn</a>
+        <a href="https://github.com/xadreque" target="_blank" rel="noopener"><svg class="fn-ic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.39.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.11-3.18 0 0 1.01-.32 3.3 1.23.96-.27 1.98-.4 3-.4 1.02 0 2.04.14 3 .4 2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>GitHub</a>
       </nav>
     </div>
 
